@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Silva Comunicação</title>
+    <link rel="icon" type="image/png" href="icone.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --primary: #fc0303; 
+            --bg-body: #0a0a0a;
+            --bg-card: rgba(30, 30, 30, 0.6);
+            --text-main: #f8fafc;
+            --text-muted: #a1a1aa;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 9pt; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #2d0a0a 0%, #0a0a0a 100%);
+        }
+
+        .login-container {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+        }
+
+        .login-container img { height: 60px; margin-bottom: 20px; }
+        h2 { font-size: 12pt; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .input-group { text-align: left; margin-bottom: 18px; }
+        .input-group label { display: block; margin-bottom: 6px; color: var(--text-muted); font-weight: 600; }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus { border-color: var(--primary); background: rgba(255, 255, 255, 0.08); }
+
+        .password-wrapper { position: relative; display: flex; align-items: center; }
+        .password-wrapper input { padding-right: 45px; }
+
+        .toggle-password { position: absolute; right: 12px; cursor: pointer; color: var(--text-muted); font-size: 1.2rem; }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .btn-login:hover { background: #be123c; transform: translateY(-2px); }
+
+        .footer-links { margin-top: 25px; color: var(--text-muted); line-height: 2; font-size: 0.85rem; }
+        .footer-links a { color: var(--primary); text-decoration: none; font-weight: 700; }
+
+        .back-home { margin-top: 25px; display: inline-block; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+        .back-home:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <img src="logo.png" alt="Silva">
+        <h2>Acessar Conta</h2>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <label>Nome</label>
+                <input type="text" id="nome" placeholder="Seu nome" required>
+            </div>
+
+            <div class="input-group">
+                <label>E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="senha" placeholder="••••••••" required>
+                    <i class="ph ph-eye toggle-password" id="btn-senha"></i>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-login" id="submitBtn">Entrar</button>
+        </form>
+
+        <div class="footer-links">
+            <div>Esqueceu a senha? <a href="recuperar.html">Clique aqui</a></div>
+            <div>Não tem conta? <a href="cadastro.html">Cadastre-se</a></div>
+        </div>
+
+        <a href="index.html" class="back-home"><i class="ph ph-arrow-left"></i> Voltar para a loja</a>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // Sua configuração do Firebase mantida
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9OABRkjQ9PKtuj9IZ2pk9PxGeaPVN2CQ",
+            authDomain: "silva-artes.firebaseapp.com",
+            projectId: "silva-artes",
+            storageBucket: "silva-artes.firebasestorage.app",
+            messagingSenderId: "791520332158",
+            appId: "1:791520332158:web:eae65a41c6d6e5d924cb2f"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Lógica de ver/esconder senha
+        const inputSenha = document.getElementById('senha');
+        const btnSenha = document.getElementById('btn-senha');
+        btnSenha.addEventListener('click', () => {
+            const isPassword = inputSenha.type === 'password';
+            inputSenha.type = isPassword ? 'text' : 'password';
+            btnSenha.classList.toggle('ph-eye');
+            btnSenha.classList.toggle('ph-eye-slash');
+        });
+
+        // Lógica de Login
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const nome = document.getElementById('nome').value; // Pegando o nome
+            const btn = document.getElementById('submitBtn');
+
+            btn.innerText = "CARREGANDO...";
+            btn.disabled = true;
+
+            signInWithEmailAndPassword(auth, email, senha)
+                .then((userCredential) => {
+                    // Opcional: Salvar o nome no localStorage para usar na loja
+                    localStorage.setItem('usuario_nome', nome);
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    btn.innerText = "ENTRAR";
+                    btn.disabled = false;
+                    alert("Erro ao entrar: E-mail ou senha incorretos.");
+                });
+        });
+    </script>
+</body>
+</html>

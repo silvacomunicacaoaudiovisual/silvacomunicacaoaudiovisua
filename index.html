@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silva Comunicação AudioVisual</title>
+    <link rel="icon" type="image/png" href="icone.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --primary: #fc0303; 
+            --bg-body: #0a0a0a;
+            --bg-card: rgba(30, 30, 30, 0.6);
+            --text-main: #f8fafc;
+            --text-muted: #a1a1aa;
+            --glass: rgba(10, 10, 10, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; width: 100%; background: var(--glass);
+            backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center; padding: 12pt 5%;
+        }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 50px; width: auto; }
+
+        .search-container { flex: 1; max-width: 800px; margin: 0 40px; display: flex; align-items: center; }
+        .search-input-wrapper {
+            flex: 1; background: white; border-radius: 20px; height: 40px;
+            display: flex; align-items: center; padding: 0 15px;
+        }
+        .search-input-wrapper i { color: #333; margin-right: 10px; }
+        .search-input-wrapper input { width: 100%; border: none; outline: none; font-size: 0.9rem; color: #333; background: transparent; }
+
+        /* --- MENU USUÁRIO (DROP DOWN CORRIGIDO) --- */
+        .user-menu { position: relative; padding: 10px 0; }
+        .user-info { display: flex; align-items: center; gap: 8px; cursor: pointer; color: white; }
+        .user-info i { font-size: 1.4rem; }
+        #user-name { font-size: 8pt; font-weight: 800; text-transform: uppercase; }
+        
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; right: 0;
+            background: #151515; min-width: 180px; border-radius: 8px;
+            border: 1px solid var(--border); z-index: 1001;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); overflow: hidden;
+        }
+        .user-menu:hover .dropdown-content { display: block; }
+        .dropdown-content a {
+            color: #ccc; padding: 12px 16px; text-decoration: none;
+            display: flex; align-items: center; gap: 10px; font-size: 0.8rem; font-weight: 600;
+        }
+        .dropdown-content a:hover { background: var(--primary); color: white; }
+
+        /* --- CONTEÚDO --- */
+        .hero { padding: 160px 5% 40px; text-align: center; background: radial-gradient(circle at center, #2d0a0a 0%, #0a0a0a 100%); }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; background: linear-gradient(to bottom, #ffffff, #ff9494); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .container { padding: 40px 5%; min-height: 50vh; }
+        .category-wrapper { margin-bottom: 60px; position: relative; }
+        .category-title { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+        .category-title h2 { font-size: 1.4rem; text-transform: uppercase; color: white; }
+        .category-title .line { height: 2px; flex-grow: 1; background: linear-gradient(to right, var(--primary), transparent); }
+
+        .carousel-container { position: relative; display: flex; align-items: center; }
+        .grid-products { display: flex; flex-wrap: nowrap; gap: 1.5rem; overflow-x: hidden; padding: 20px 0; scroll-behavior: smooth; width: 100%; }
+
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 45px; height: 45px; background: var(--primary);
+            color: white; border: none; border-radius: 50%;
+            cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
+        }
+        .prev-btn { left: -20px; }
+        .next-btn { right: -20px; }
+
+        .card { flex: 0 0 auto; width: 280px; background: var(--bg-card); border-radius: 18px; overflow: hidden; border: 1px solid var(--border); transition: 0.4s; }
+        .card:hover { transform: translateY(-8px); border-color: var(--primary); }
+        .card-img { width: 100%; height: 300px; background: #fff; display: flex; align-items: center; justify-content: center; }
+        .card-img img { max-width: 150%; max-height: 100%; object-fit: contain; }
+        .card-info { padding: 1.2rem; background: #121212; }
+        .card-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; min-height: 35px; color: #fff; }
+        .card-footer { display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+        .price { font-weight: 800; font-size: 1rem; color: #fff; }
+        .btn-buy { background: var(--primary); color: white; padding: 8px 12px; border-radius: 8px; font-weight: 800; border: none; cursor: pointer; }
+
+        /* --- FOOTER (ESTÁTICO) --- */
+        footer { background: #050505; padding: 60px 5% 30px; border-top: 1px solid var(--border); margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--primary); margin-bottom: 1.2rem; font-size: 0.9rem; text-transform: uppercase; }
+        .footer-col a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; display: block; margin-bottom: 8px; transition: 0.3s; }
+        .footer-col a:hover { color: white; }
+        .payment-methods img { max-width: 250px; height: auto; display: block; }
+        .copyright { opacity: 0.3; font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; }
+
+        @media (max-width: 850px) {
+            header { flex-wrap: wrap; padding: 10px 5%; }
+            .search-container { order: 3; max-width: 100%; margin: 10px 0 0; width: 100%; }
+            .nav-btn { display: none; }
+            .grid-products { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo"><img src="logo.png" alt="Silva"> <span>Silva Comunicação AudioVisual</span></a>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Buscar artes...">
+            </div>
+        </div>
+        <div class="user-menu">
+            <div class="user-info" id="user-info-box">
+                <i class="ph ph-user"></i>
+                <span id="user-name">ENTRAR</span>
+            </div>
+            <div class="dropdown-content" id="user-dropdown">
+                <a href="downloads.html"><i class="ph ph-download-simple"></i> Meus Downloads</a>
+                <a href="#" onclick="logoutUser()"><i class="ph ph-sign-out"></i> Sair da Conta</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Premium Estampas</h1>
+        <p>Artes exclusivas em alta resolução.</p>
+    </section>
+
+    <main class="container" id="catalogo">
+        <div class="category-wrapper">
+            <div class="category-title"><h2>ABADÁS 2026</h2><div class="line"></div></div>
+            <div class="carousel-container">
+                <button class="nav-btn prev-btn" onclick="sideScroll('carousel-abadas', 'left')"><i class="ph ph-caret-left"></i></button>
+                <div class="grid-products" id="carousel-abadas">
+                    <div class="card"><div class="card-img"><img src="ABADÁS 2026/01.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 01 - PREMIUM</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_01')">COMPRAR</button></div></div></div>
+                    <div class="card"><div class="card-img"><img src="ABADÁS 2026/02.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 02 - PREMIUM</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_02')">COMPRAR</button></div></div></div>
+                    <div class="card"><div class="card-img"><img src="ABADÁS 2026/03.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 03 - PREMIUM</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_03')">COMPRAR</button></div></div></div>
+                    <div class="card"><div class="card-img"><img src="ABADÁS 2026/04.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 04</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_04')">COMPRAR</button></div></div></div>
+                    <div class="card"><div class="card-img"><img src="ABADÁS 2026/05.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 05</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_05')">COMPRAR</button></div></div></div>
+                </div>
+                <button class="nav-btn next-btn" onclick="sideScroll('carousel-abadas', 'right')"><i class="ph ph-caret-right"></i></button>
+            </div>
+        </div>
+
+        <div class="category-wrapper">
+            <div class="category-title"><h2>Futebol</h2><div class="line"></div></div>
+            <div class="carousel-container">
+                <button class="nav-btn prev-btn" onclick="sideScroll('carousel-futebol', 'left')"><i class="ph ph-caret-left"></i></button>
+                <div class="grid-products" id="carousel-futebol">
+                    <div class="card"><div class="card-img"><img src="FUTEBOL/psg.png"></div><div class="card-info"><h3 class="card-title">PSG 22-23</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_PSG')">COMPRAR</button></div></div></div>
+                    <div class="card"><div class="card-img"><img src="FUTEBOL/real.png"></div><div class="card-info"><h3 class="card-title">REAL MADRID</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_REAL')">COMPRAR</button></div></div></div>
+                </div>
+                <button class="nav-btn next-btn" onclick="sideScroll('carousel-futebol', 'right')"><i class="ph ph-caret-right"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 1rem;"><img src="logo.png" alt="Silva" style="height: 40px;"> Silva Comunicação AudioVisual</div>
+                <p style="color: var(--text-muted); font-size: 0.8rem;">O maior site de artes digitais para sublimação do Brasil.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <a href="index.html">Início</a>
+                <a href="#catalogo">Catálogo</a>
+                <a href="suporte.html">Suporte</a>
+            </div>
+            <div class="footer-col">
+                <h4>Formas de Pagamento:</h4>
+                <div class="payment-methods"><img src="image_c9bdc6.png" alt="Pagamento"></div>
+            </div>
+        </div>
+        <div class="copyright">© 2013 Silva Comunicação AudioVisual - Todos os direitos Reservados.</div>
+    </footer>
+
+    <script>
+        function sideScroll(elementId, direction) {
+            const container = document.getElementById(elementId);
+            if (direction === 'left') container.scrollLeft -= 300;
+            else container.scrollLeft += 300;
+        }
+
+        function irParaPagamento(link) {
+            const usuarioLogado = localStorage.getItem('usuario_nome');
+            if (!usuarioLogado) {
+                alert("Você precisa estar logado para comprar!");
+                window.location.href = "login.html";
+            } else {
+                window.location.href = link;
+            }
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('usuario_nome');
+            window.location.reload();
+        }
+
+        window.addEventListener('load', () => {
+            const nomeUsuario = localStorage.getItem('usuario_nome');
+            const infoBox = document.getElementById('user-info-box');
+            const dropdown = document.getElementById('user-dropdown');
+            if (nomeUsuario) {
+                document.getElementById('user-name').innerText = nomeUsuario.split(' ')[0].toUpperCase();
+            } else {
+                dropdown.style.display = 'none';
+                infoBox.onclick = () => window.location.href = "login.html";
+            }
+        });
+
+// --- SCRIPT DE BUSCA RESTRITA ---
+const searchInput = document.getElementById('search-input');
+
+if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const termo = this.value.toLowerCase().trim();
+        const categorias = document.querySelectorAll('.category-wrapper');
+
+        categorias.forEach(cat => {
+            const cards = cat.querySelectorAll('.card');
+            let temResultadoNaCategoria = false;
+
+            cards.forEach(card => {
+                const titulo = card.querySelector('.card-title').innerText.toLowerCase();
+                
+                // Se o termo estiver no título, mostra o card, senão esconde
+                if (titulo.includes(termo)) {
+                    card.style.display = "block";
+                    temResultadoNaCategoria = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            // Esconde o título da categoria e a linha se não houver nenhum card correspondente
+            if (temResultadoNaCategoria) {
+                cat.style.display = "block";
+            } else {
+                cat.style.display = "none";
+            }
+        });
+    });
+}
+    </script>
+</body>
+</html>

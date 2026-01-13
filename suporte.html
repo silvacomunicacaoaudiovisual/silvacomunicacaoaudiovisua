@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte - Silva Comunicação</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --primary: #fc0303; 
+            --bg-body: #0a0a0a;
+            --bg-card: rgba(30, 30, 30, 0.6);
+            --text-main: #f8fafc;
+            --text-muted: #a1a1aa;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 8pt; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #2d0a0a 0%, #0a0a0a 100%);
+            padding: 20px;
+        }
+
+        .support-container {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        h2 { font-size: 12pt; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; color: white; }
+        .subtitle { color: var(--text-muted); margin-bottom: 25px; }
+
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--text-muted); }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        /* Correção do fundo branco nas opções */
+        select option {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 10px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { 
+            border-color: var(--primary); 
+        }
+
+        textarea { height: 100px; resize: none; }
+
+        .btn-send {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-send:hover { background: #be123c; box-shadow: 0 0 15px rgba(252, 3, 3, 0.3); }
+
+        .back-link { display: inline-block; margin-top: 20px; color: var(--text-muted); text-decoration: none; }
+        .back-link:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="support-container">
+        <img src="logo.png" alt="Silva" style="height: 45px; margin-bottom: 15px;">
+        <h2>Suporte ao Cliente</h2>
+        <p class="subtitle">Envia a tua mensagem e responderemos por e-mail.</p>
+
+        <form action="https://formspree.io/f/xnjqkldp" method="POST">
+            <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" name="nome" placeholder="Teu nome" required>
+            </div>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="teu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Assunto</label>
+                <select name="assunto">
+                    <option value="Dúvida sobre Arte">Dúvida sobre Arte</option>
+                    <option value="Problema no Download">Problema no Download</option>
+                    <option value="Pedido Personalizado">Pedido Personalizado</option>
+                    <option value="Outro">Outro Assunto</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Mensagem</label>
+                <textarea name="mensagem" placeholder="Como te podemos ajudar?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-send">Enviar Mensagem</button>
+        </form>
+
+        <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar para o Início</a>
+    </div>
+
+</body>
+</html>
