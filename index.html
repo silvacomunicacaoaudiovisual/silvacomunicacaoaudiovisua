@@ -177,6 +177,11 @@
     </header>
 
     <section class="hero">
+        <nav style="display: flex; justify-content: center; gap: 15px; padding: 20px; background: #000; border-bottom: 1px solid var(--border);">
+    <a href="#carousel-abadas" style="color: white; text-decoration: none; font-weight: 800; font-size: 10pt; border: 1px solid var(--primary); padding: 5px 15px; border-radius: 20px;">ABADÁS</a>
+    <a href="#carousel-terceirão" style="color: white; text-decoration: none; font-weight: 800; font-size: 10pt; border: 1px solid var(--primary); padding: 5px 15px; border-radius: 20px;">TERCEIRÃO</a>
+    <a href="#carousel-futebol" style="color: white; text-decoration: none; font-weight: 800; font-size: 10pt; border: 1px solid var(--primary); padding: 5px 15px; border-radius: 20px;">FUTEBOL</a>
+</nav>
         <h1>Premium Estampas</h1>
         <p>Artes exclusivas em alta Resolução</p>
         <p>Arquivos em PDF e COREL</p>
@@ -284,7 +289,7 @@
             }
         });
 
-// --- SCRIPT DE BUSCA RESTRITA ---
+// --- SCRIPT DE BUSCA FILTRADA ---
 const searchInput = document.getElementById('search-input');
 
 if (searchInput) {
@@ -293,13 +298,13 @@ if (searchInput) {
         const categorias = document.querySelectorAll('.category-wrapper');
 
         categorias.forEach(cat => {
+            const grid = cat.querySelector('.grid-products');
             const cards = cat.querySelectorAll('.card');
             let temResultadoNaCategoria = false;
 
             cards.forEach(card => {
                 const titulo = card.querySelector('.card-title').innerText.toLowerCase();
                 
-                // Se o termo estiver no título, mostra o card, senão esconde
                 if (titulo.includes(termo)) {
                     card.style.display = "block";
                     temResultadoNaCategoria = true;
@@ -308,19 +313,23 @@ if (searchInput) {
                 }
             });
 
-            // Esconde o título da categoria e a linha se não houver nenhum card correspondente
-            if (temResultadoNaCategoria) {
-                cat.style.display = "block";
+            // Se estiver buscando, permite que os itens quebrem linha (grid)
+            // Se estiver vazio, volta para o modo carrossel (flex-nowrap)
+            if (termo !== "") {
+                grid.style.flexWrap = "wrap"; 
+                cat.style.display = temResultadoNaCategoria ? "block" : "none";
             } else {
-                cat.style.display = "none";
+                grid.style.flexWrap = "nowrap";
+                cat.style.display = "block";
             }
         });
     });
-}
+}}
     </script>
 </body>
 
 </html>
+
 
 
 
