@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Download Liberado - Silva Comunicação AudioVisual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0a0a0a; color: white; font-family: 'Inter', sans-serif; text-align: center; padding: 50px 20px; }
+        .card { max-width: 450px; margin: 0 auto; background: #151515; padding: 30px; border-radius: 15px; border: 1px solid #333; }
+        .btn-download { background: #fc0303; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: 800; display: block; margin-top: 20px; }
+        img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2 id="nome-produto">Processando...</h2>
+        <img id="imagem-produto" src="logo.png">
+        <p>O teu pagamento foi confirmado! Clica abaixo:</p>
+        <a id="link-download" href="#" class="btn-download">BAIXAR ARQUIVO</a>
+    </div>
+
+    <script>
+        // Esta parte lê o que está no link (ex: ?item=abada01)
+        const urlParams = new URLSearchParams(window.location.search);
+        const item = urlParams.get('item');
+
+        // Configuração dos teus 50+ produtos num só lugar
+        const produtos = {
+            'abada01': {
+                nome: 'ABADÁ 01 - PREMIUM',
+                imagem: 'ABADÁS 2026/01.png',
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisual/main/ABADÁS 2026/01.zip'
+            },
+            'abada02': {
+                nome: 'ABADÁ 02 - PREMIUM',
+                imagem: 'ABADÁS 2026/02.png',
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisual/main/ABADÁS 2026/02.zip'
+            }
+            // Basta ires adicionando os outros aqui...
+        };
+
+        if (produtos[item]) {
+            document.getElementById('nome-produto').innerText = produtos[item].nome;
+            document.getElementById('imagem-produto').src = produtos[item].imagem;
+            document.getElementById('link-download').href = produtos[item].download;
+        }
+    </script>
+</body>
+</html>
