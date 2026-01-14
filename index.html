@@ -98,12 +98,72 @@
         .payment-methods img { max-width: 250px; height: auto; display: block; }
         .copyright { opacity: 0.3; font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; }
 
-        @media (max-width: 850px) {
-            header { flex-wrap: wrap; padding: 10px 5%; }
-            .search-container { order: 3; max-width: 100%; margin: 10px 0 0; width: 100%; }
-            .nav-btn { display: none; }
-            .grid-products { overflow-x: auto; }
-        }
+/* --- AJUSTE DE CABEÇALHO PARA CELULAR --- */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 5%;
+        display: grid; /* Usa grid para organizar em linhas */
+        grid-template-columns: 1fr auto; /* Logo na esquerda, Login na direita */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo {
+        grid-column: 1;
+        font-size: 0.85rem; /* Diminui o texto da logo */
+    }
+
+    .logo img {
+        height: 35px; /* Logo menor no celular */
+    }
+
+    /* O botão de entrar fica alinhado à direita da logo */
+    .user-menu {
+        grid-column: 2;
+        justify-self: end;
+    }
+
+    /* A barra de busca ganha uma linha exclusiva embaixo */
+    .search-container {
+        grid-column: 1 / span 2; /* Ocupa a largura toda */
+        margin: 5px 0 10px 0;
+        max-width: 100%;
+    }
+
+    .search-input-wrapper {
+        height: 45px; /* Barra de busca mais alta para facilitar o toque */
+        border-radius: 10px;
+    }
+
+    /* Ajuste do banner principal para não ficar escondido */
+    .hero {
+        padding: 190px 5% 40px; 
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Exibe 2 cards por linha no celular para não precisar de tanto scroll */
+    .grid-products {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .card-img {
+        height: 160px; /* Ajusta altura da imagem no celular */
+    }
+
+    .card-title {
+        font-size: 0.7rem;
+        min-height: 30px;
+    }
+}
     </style>
 </head>
 <body>
@@ -254,5 +314,6 @@ if (searchInput) {
 </body>
 
 </html>
+
 
 
