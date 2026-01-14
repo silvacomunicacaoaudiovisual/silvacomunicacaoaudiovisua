@@ -251,79 +251,80 @@
     </footer>
 
     <script>
-        function sideScroll(elementId, direction) {
-            const container = document.getElementById(elementId);
-            if (direction === 'left') container.scrollLeft -= 300;
-            else container.scrollLeft += 300;
+    function sideScroll(elementId, direction) {
+        const container = document.getElementById(elementId);
+        if (direction === 'left') container.scrollLeft -= 300;
+        else container.scrollLeft += 300;
+    }
+
+    function irParaPagamento(link) {
+        const usuarioLogado = localStorage.getItem('usuario_nome');
+        if (!usuarioLogado) {
+            alert("Você precisa estar logado para comprar!");
+            window.location.href = "login.html";
+        } else {
+            window.location.href = link;
         }
+    }
 
-        function irParaPagamento(link) {
-            const usuarioLogado = localStorage.getItem('usuario_nome');
-            if (!usuarioLogado) {
-                alert("Você precisa estar logado para comprar!");
-                window.location.href = "login.html";
-            } else {
-                window.location.href = link;
-            }
+    function logoutUser() {
+        localStorage.removeItem('usuario_nome');
+        window.location.reload();
+    }
+
+    window.addEventListener('load', () => {
+        const nomeUsuario = localStorage.getItem('usuario_nome');
+        const infoBox = document.getElementById('user-info-box');
+        const dropdown = document.getElementById('user-dropdown');
+        if (nomeUsuario) {
+            document.getElementById('user-name').innerText = nomeUsuario.split(' ')[0].toUpperCase();
+        } else {
+            if(dropdown) dropdown.style.display = 'none';
+            if(infoBox) infoBox.onclick = () => window.location.href = "login.html";
         }
+    });
 
-        function logoutUser() {
-            localStorage.removeItem('usuario_nome');
-            window.location.reload();
-        }
+    // --- NOVA PESQUISA QUE FUNCIONA ---
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const termo = this.value.toLowerCase().trim();
+            const categorias = document.querySelectorAll('.category-wrapper');
 
-        window.addEventListener('load', () => {
-            const nomeUsuario = localStorage.getItem('usuario_nome');
-            const infoBox = document.getElementById('user-info-box');
-            const dropdown = document.getElementById('user-dropdown');
-            if (nomeUsuario) {
-                document.getElementById('user-name').innerText = nomeUsuario.split(' ')[0].toUpperCase();
-            } else {
-                dropdown.style.display = 'none';
-                infoBox.onclick = () => window.location.href = "login.html";
-            }
-        });
+            categorias.forEach(cat => {
+                const grid = cat.querySelector('.grid-products');
+                const cards = cat.querySelectorAll('.card');
+                let temResultado = false;
 
-// --- SCRIPT DE BUSCA FILTRADA ---
-const searchInput = document.getElementById('search-input');
+                cards.forEach(card => {
+                    const titulo = card.querySelector('.card-title').innerText.toLowerCase();
+                    if (titulo.includes(termo)) {
+                        card.style.display = "block";
+                        temResultado = true;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
 
-if (searchInput) {
-    searchInput.addEventListener('input', function() {
-        const termo = this.value.toLowerCase().trim();
-        const categorias = document.querySelectorAll('.category-wrapper');
-
-        categorias.forEach(cat => {
-            const grid = cat.querySelector('.grid-products');
-            const cards = cat.querySelectorAll('.card');
-            let temResultadoNaCategoria = false;
-
-            cards.forEach(card => {
-                const titulo = card.querySelector('.card-title').innerText.toLowerCase();
-                
-                if (titulo.includes(termo)) {
-                    card.style.display = "block";
-                    temResultadoNaCategoria = true;
+                // Se estiver pesquisando, desativa o carrossel para mostrar em grade
+                if (termo !== "") {
+                    grid.style.flexWrap = "wrap";
+                    grid.style.overflowX = "visible";
+                    cat.style.display = temResultado ? "block" : "none";
                 } else {
-                    card.style.display = "none";
+                    // Volta ao normal (carrossel) se a busca estiver vazia
+                    grid.style.flexWrap = "nowrap";
+                    grid.style.overflowX = "auto";
+                    cat.style.display = "block";
                 }
             });
-
-            // Se estiver buscando, permite que os itens quebrem linha (grid)
-            // Se estiver vazio, volta para o modo carrossel (flex-nowrap)
-            if (termo !== "") {
-                grid.style.flexWrap = "wrap"; 
-                cat.style.display = temResultadoNaCategoria ? "block" : "none";
-            } else {
-                grid.style.flexWrap = "nowrap";
-                cat.style.display = "block";
-            }
         });
-    });
-}}
-    </script>
+    }
+</script>
 </body>
 
 </html>
+
 
 
 
