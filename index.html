@@ -98,70 +98,58 @@
         .payment-methods img { max-width: 250px; height: auto; display: block; }
         .copyright { opacity: 0.3; font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; }
 
-/* --- AJUSTE DE CABEÇALHO PARA CELULAR --- */
+/* --- AJUSTE PARA MANTER CARROSSEL NO CELULAR --- */
 @media (max-width: 768px) {
     header {
         padding: 10px 5%;
-        display: grid; /* Usa grid para organizar em linhas */
-        grid-template-columns: 1fr auto; /* Logo na esquerda, Login na direita */
+        display: grid;
+        grid-template-columns: 1fr auto;
         align-items: center;
         gap: 10px;
     }
 
     .logo {
         grid-column: 1;
-        font-size: 0.85rem; /* Diminui o texto da logo */
+        font-size: 0.85rem;
     }
 
     .logo img {
-        height: 35px; /* Logo menor no celular */
+        height: 35px;
     }
 
-    /* O botão de entrar fica alinhado à direita da logo */
     .user-menu {
         grid-column: 2;
         justify-self: end;
     }
 
-    /* A barra de busca ganha uma linha exclusiva embaixo */
     .search-container {
-        grid-column: 1 / span 2; /* Ocupa a largura toda */
+        grid-column: 1 / span 2;
         margin: 5px 0 10px 0;
         max-width: 100%;
     }
 
-    .search-input-wrapper {
-        height: 45px; /* Barra de busca mais alta para facilitar o toque */
-        border-radius: 10px;
-    }
-
-    /* Ajuste do banner principal para não ficar escondido */
-    .hero {
-        padding: 190px 5% 40px; 
-    }
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    /* Exibe 2 cards por linha no celular para não precisar de tanto scroll */
+    /* REGRAS DO CARROSSEL (VOLTANDO AO ANTERIOR) */
     .grid-products {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        display: flex; /* Volta para linha única */
+        flex-wrap: nowrap; /* Impede que os cards desçam */
+        overflow-x: auto; /* Ativa o deslize com o dedo */
+        -webkit-overflow-scrolling: touch; /* Deixa o deslize suave no iPhone */
+        gap: 1rem;
+        padding: 10px 0 20px 0;
+        scroll-behavior: smooth;
     }
 
     .card {
-        width: 100%;
+        flex: 0 0 240px; /* Define um tamanho fixo para o card no celular */
+        width: 240px;
     }
 
-    .card-img {
-        height: 160px; /* Ajusta altura da imagem no celular */
+    .nav-btn {
+        display: none; /* Em telas touch, as setas são escondidas para usar o dedo */
     }
 
-    .card-title {
-        font-size: 0.7rem;
-        min-height: 30px;
+    .hero {
+        padding: 190px 5% 40px;
     }
 }
     </style>
