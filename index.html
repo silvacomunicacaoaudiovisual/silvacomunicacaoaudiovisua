@@ -170,18 +170,18 @@
     /* Ajusta o topo para não quebrar linha */
     .header-top {
         padding: 5px 2%;
-        flex-wrap: nowrap; /* Impede de ir para baixo */
+        flex-wrap: nowrap; 
         justify-content: space-between;
     }
 
-    /* Esconde o texto longo da logo, deixa só o ícone para ganhar espaço */
+    /* Esconde o texto longo da logo */
     .logo span { display: none; }
     .logo img { height: 35px; }
 
-    /* Diminui a barra de pesquisa para caber no meio */
+    /* Barra de pesquisa ajustada */
     .search-container {
         margin: 0 10px;
-        max-width: 150px; /* Ajusta conforme necessário */
+        max-width: 150px; 
     }
     .search-input-wrapper { height: 32px; padding: 0 8px; }
     .search-input-wrapper input { font-size: 0.7rem; }
@@ -191,32 +191,48 @@
     .action-item i { font-size: 1.1rem; }
     .action-item span { font-size: 0.55rem; }
 
-    /* --- MENU VERMELHO IGUAL AO PC --- */
+    /* --- MENU VERMELHO DESLIZÁVEL --- */
     .nav-categories {
         display: flex !important;
-        flex-wrap: nowrap !important; /* Mantém tudo em uma linha só */
-        overflow-x: auto; /* Permite deslizar com o dedo para os lados */
+        flex-wrap: nowrap !important; 
+        overflow-x: auto; 
         justify-content: flex-start;
         padding: 8px 10px;
         gap: 15px;
-        -webkit-overflow-scrolling: touch; /* Deixa o deslize suave no iPhone */
+        -webkit-overflow-scrolling: touch; 
     }
 
     .nav-categories a {
         font-size: 0.65rem;
-        white-space: nowrap; /* Não deixa o texto quebrar em 2 linhas */
+        white-space: nowrap; 
     }
 
-    /* --- CORREÇÃO DO MENU SUSPENSO (LOGIN) --- */
+    /* --- CARROSSEL DE PRODUTOS DESLIZÁVEL --- */
+    .grid-products {
+        overflow-x: auto !important; /* Permite deslizar com o dedo */
+        -webkit-overflow-scrolling: touch;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .nav-btn {
+        display: none !important; /* Esconde as setas no celular */
+    }
+
+    .card {
+        flex: 0 0 240px; /* Define um tamanho fixo para os cards não esmagarem */
+    }
+
+    /* --- CORREÇÃO DO MENU SUSPENSO --- */
     .dropdown-content {
-        position: fixed; /* Fixa na tela para não ser cortado */
+        position: fixed; 
         top: 55px;
         right: 10px;
         background-color: #000000 !important;
         z-index: 10000 !important;
         width: 160px;
     }
-}
+}}
     </style>
 </head>
 <body>
@@ -419,5 +435,6 @@
     </script>
 </body>
 </html>
+
 
 
