@@ -167,6 +167,19 @@
     /* Mantém o header fixo e evita que os itens sumam */
     body { padding-top: 100px; }
 
+    /* --- REDUÇÃO DO CONTAINER PREMIUM ESTAMPAS --- */
+    .hero {
+        padding: 20px 5% 15px !important; /* Diminui o espaço vazio em volta do texto */
+    }
+    .hero h1 {
+        font-size: 1.5rem !important; /* Título menor para caber em uma linha */
+        margin-bottom: 5px;
+    }
+    .hero p {
+        font-size: 0.75rem !important; /* Texto de apoio menor */
+        line-height: 1.2;
+    }
+
     /* Ajusta o topo para não quebrar linha */
     .header-top {
         padding: 5px 2%;
@@ -181,7 +194,7 @@
     /* Barra de pesquisa ajustada */
     .search-container {
         margin: 0 10px;
-        max-width: 150px; 
+        max-width: 130px; /* Reduzi um pouco mais para garantir espaço */
     }
     .search-input-wrapper { height: 32px; padding: 0 8px; }
     .search-input-wrapper input { font-size: 0.7rem; }
@@ -209,18 +222,18 @@
 
     /* --- CARROSSEL DE PRODUTOS DESLIZÁVEL --- */
     .grid-products {
-        overflow-x: auto !important; /* Permite deslizar com o dedo */
+        overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
         display: flex !important;
         flex-wrap: nowrap !important;
     }
 
     .nav-btn {
-        display: none !important; /* Esconde as setas no celular */
+        display: none !important; 
     }
 
     .card {
-        flex: 0 0 240px; /* Define um tamanho fixo para os cards não esmagarem */
+        flex: 0 0 220px; /* Diminuído levemente para mostrar o começo do próximo card */
     }
 
     /* --- CORREÇÃO DO MENU SUSPENSO --- */
@@ -232,7 +245,7 @@
         z-index: 10000 !important;
         width: 160px;
     }
-}}
+}
     </style>
 </head>
 <body>
@@ -435,6 +448,7 @@
     </script>
 </body>
 </html>
+
 
 
 
