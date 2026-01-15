@@ -10,55 +10,120 @@
     <style>
         :root {
             --primary: #fc0303; 
+            --azul-atual: #000000; 
+            --azul-nav: #990000;   
             --bg-body: #0a0a0a;
             --bg-card: rgba(30, 30, 30, 0.6);
             --text-main: #f8fafc;
             --text-muted: #a1a1aa;
-            --glass: rgba(10, 10, 10, 0.85);
             --border: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; padding-top: 110px; }
 
-        /* --- HEADER --- */
+        /* --- HEADER PROFISSIONAL --- */
         header {
-            position: fixed; top: 0; width: 100%; background: var(--glass);
-            backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid var(--border);
-            display: flex; justify-content: space-between; align-items: center; padding: 12pt 5%;
+            position: fixed; top: 0; width: 100%; background: var(--azul-atual);
+            z-index: 1000; display: flex; flex-direction: column;
         }
-        .logo { font-size: 1.1rem; font-weight: 800; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 50px; width: auto; }
 
-        .search-container { flex: 1; max-width: 800px; margin: 0 40px; display: flex; align-items: center; }
+        .header-top {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 5%; gap: 20px; width: 100%;
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
+        .logo img { height: 45px; width: auto; }
+        .logo span { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; }
+
+        .search-container { flex: 1; max-width: 600px; }
         .search-input-wrapper {
-            flex: 1; background: white; border-radius: 20px; height: 40px;
+            background: white; border-radius: 4px; height: 38px;
             display: flex; align-items: center; padding: 0 15px;
         }
-        .search-input-wrapper i { color: #333; margin-right: 10px; }
-        .search-input-wrapper input { width: 100%; border: none; outline: none; font-size: 0.9rem; color: #333; background: transparent; }
+        .search-input-wrapper i { color: #666; margin-right: 10px; }
+        .search-input-wrapper input { width: 100%; border: none; outline: none; font-size: 0.9rem; color: #333; }
 
-        /* --- MENU USUÁRIO (DROP DOWN CORRIGIDO) --- */
-        .user-menu { position: relative; padding: 10px 0; }
-        .user-info { display: flex; align-items: center; gap: 8px; cursor: pointer; color: white; }
-        .user-info i { font-size: 1.4rem; }
-        #user-name { font-size: 8pt; font-weight: 800; text-transform: uppercase; }
+        .header-actions { display: flex; align-items: center; gap: 20px; color: white; }
         
-        .dropdown-content {
-            display: none; position: absolute; top: 100%; right: 0;
-            background: #151515; min-width: 180px; border-radius: 8px;
-            border: 1px solid var(--border); z-index: 1001;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8); overflow: hidden;
+        /* ANIMAÇÃO NOS ITENS DE ENTRAR/AVISOS */
+        .action-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; position: relative; transition: 0.3s; z-index: 10000; }
+        .action-item:hover { color: var(--primary); transform: translateY(-3px); }
+        .action-item i { font-size: 1.4rem; }
+        .action-item span { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; margin-top: 2px; }
+
+
+.nav-categories {
+    background: var(--azul-nav); 
+    display: flex; 
+    justify-content: center;
+    padding: 7px 5%; 
+    gap: 30px; 
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative; /* Necessário para o z-index funcionar */
+    z-index: 1 !important; /* Valor baixo para ficar atrás do menu */
+}
+
+        /* ANIMAÇÃO NO MENU DE CATEGORIAS */
+        .nav-categories a {
+            color: white; text-decoration: none; font-size: 0.75rem; font-weight: 600;
+            text-transform: uppercase; cursor: pointer;
+            position: relative;
+            padding: 4px 0;
+            transition: 0.3s;
         }
-        .user-menu:hover .dropdown-content { display: block; }
-        .dropdown-content a {
-            color: #ccc; padding: 12px 16px; text-decoration: none;
-            display: flex; align-items: center; gap: 10px; font-size: 0.8rem; font-weight: 600;
+        /* Linha que desliza */
+        .nav-categories a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
         }
-        .dropdown-content a:hover { background: var(--primary); color: white; }
+        .nav-categories a:hover::after {
+            width: 100%;
+        }
+
+.dropdown-content {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    right: 0;
+    background-color: #000000 !important; /* Cor sólida */
+    min-width: 180px; 
+    border-radius: 4px;
+    border: 1px solid var(--border); 
+    z-index: 99999 !important; /* Valor muito alto */
+    opacity: 1 !important; /* Garante que não herde transparência */
+    box-shadow: 0 10px 20px rgba(0,0,0,1);
+}
+.action-item:hover .dropdown-content { 
+    display: block !important; 
+}
+
+/* Garante que os links dentro também não sejam transparentes */
+.dropdown-content a {
+    color: #ccc; 
+    padding: 12px 16px; 
+    text-decoration: none;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 0.8rem;
+    background-color: #000000 !important;
+}
+
+.dropdown-content a:hover { 
+    background-color: var(--primary) !important; 
+    color: white; 
+}
 
         /* --- CONTEÚDO --- */
-        .hero { padding: 160px 5% 40px; text-align: center; background: radial-gradient(circle at center, #2d0a0a 0%, #0a0a0a 100%); }
+        .hero { padding: 60px 5% 40px; text-align: center; background: radial-gradient(circle at center, #2d0a0a 0%, #0a0a0a 100%); }
         .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; background: linear-gradient(to bottom, #ffffff, #ff9494); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .container { padding: 40px 5%; min-height: 50vh; }
@@ -89,7 +154,7 @@
         .price { font-weight: 800; font-size: 1rem; color: #fff; }
         .btn-buy { background: var(--primary); color: white; padding: 8px 12px; border-radius: 8px; font-weight: 800; border: none; cursor: pointer; }
 
-        /* --- FOOTER (ESTÁTICO) --- */
+        /* --- FOOTER COMPLETO --- */
         footer { background: #050505; padding: 60px 5% 30px; border-top: 1px solid var(--border); margin-top: 50px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 40px; }
         .footer-col h4 { color: var(--primary); margin-bottom: 1.2rem; font-size: 0.9rem; text-transform: uppercase; }
@@ -98,93 +163,66 @@
         .payment-methods img { max-width: 250px; height: auto; display: block; }
         .copyright { opacity: 0.3; font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; }
 
-/* --- AJUSTE PARA MANTER CARROSSEL NO CELULAR --- */
-@media (max-width: 768px) {
-    header {
-        padding: 10px 5%;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .logo {
-        grid-column: 1;
-        font-size: 0.85rem;
-    }
-
-    .logo img {
-        height: 35px;
-    }
-
-    .user-menu {
-        grid-column: 2;
-        justify-self: end;
-    }
-
-    .search-container {
-        grid-column: 1 / span 2;
-        margin: 5px 0 10px 0;
-        max-width: 100%;
-    }
-
-    /* REGRAS DO CARROSSEL (VOLTANDO AO ANTERIOR) */
-    .grid-products {
-        display: flex; /* Volta para linha única */
-        flex-wrap: nowrap; /* Impede que os cards desçam */
-        overflow-x: auto; /* Ativa o deslize com o dedo */
-        -webkit-overflow-scrolling: touch; /* Deixa o deslize suave no iPhone */
-        gap: 1rem;
-        padding: 10px 0 20px 0;
-        scroll-behavior: smooth;
-    }
-
-    .card {
-        flex: 0 0 240px; /* Define um tamanho fixo para o card no celular */
-        width: 240px;
-    }
-
-    .nav-btn {
-        display: none; /* Em telas touch, as setas são escondidas para usar o dedo */
-    }
-
-    .hero {
-        padding: 190px 5% 40px;
-    }
-}
+        @media (max-width: 768px) {
+            body { padding-top: 140px; }
+            .logo span { display: none; }
+            .header-top { flex-wrap: wrap; }
+            .search-container { order: 3; width: 100%; max-width: 100%; }
+            .grid-products { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .card { flex: 0 0 240px; }
+            .nav-btn { display: none; }
+        }
     </style>
 </head>
 <body>
 
-   <header>
-        <a href="index.html" class="logo"><img src="logo.png" alt="Silva"> <span>Silva Comunicação AudioVisual</span></a>
-        <div class="search-container">
-            <div class="search-input-wrapper">
-                <i class="ph ph-magnifying-glass"></i>
-                <input type="text" id="search-input" placeholder="Buscar artes...">
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Silva">
+                <span>Silva Comunicação AudioVisual</span>
+            </a>
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="O que você procura?">
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="action-item" id="user-info-box">
+                    <i class="ph ph-user"></i>
+                    <span id="user-name">ENTRAR</span>
+                    <div class="dropdown-content" id="user-dropdown">
+                        <a href="downloads.html"><i class="ph ph-download-simple"></i> Meus Downloads</a>
+                        <a href="#" onclick="logoutUser()"><i class="ph ph-sign-out"></i> Sair da Conta</a>
+                    </div>
+                </div>
+                <div class="action-item"><i class="ph ph-bell"></i><span>AVISOS</span></div>
+                <div class="action-item"><i class="ph ph-shopping-cart"></i><span>CARRINHO</span></div>
             </div>
         </div>
-        <div class="user-menu">
-            <div class="user-info" id="user-info-box">
-                <i class="ph ph-user"></i>
-                <span id="user-name">ENTRAR</span>
-            </div>
-            <div class="dropdown-content" id="user-dropdown">
-                <a href="downloads.html"><i class="ph ph-download-simple"></i> Meus Downloads</a>
-                <a href="#" onclick="logoutUser()"><i class="ph ph-sign-out"></i> Sair da Conta</a>
-            </div>
-        </div>
+        <nav class="nav-categories">
+            <a onclick="filtrarCategoria('all')">Início</a>
+            <a onclick="filtrarCategoria('cat-abadas')">Abadás</a>
+            <a onclick="filtrarCategoria('cat-terceirao')">Terceirão</a>
+            <a onclick="filtrarCategoria('cat-futebol')">Futebol</a>
+            <a onclick="filtrarCategoria('cat-interclasse')">interclasse</a>
+            <a onclick="filtrarCategoria('cat-pescaria')">pescaria</a>
+            <a onclick="filtrarCategoria('cat-religiosas')">religiosas</a>
+            <a onclick="filtrarCategoria('cat-juninas')">juninas</a>
+            <a onclick="filtrarCategoria('cat-wind banner')">wind banner</a>
+            <a onclick="filtrarCategoria('cat-fontes de times')">fonte de times</a>
+        </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="hero-banner">
         <h1>Premium Estampas</h1>
-        <p>Artes exclusivas em alta Resolução</p>
-        <p>Arquivos em PDF e COREL</p>
+        <p>Artes exclusivas em alta Resolução  |  Arquivos em PDF e CORELDRAW</p>
     </section>
 
     <main class="container" id="catalogo">
         
-        <div class="category-wrapper">
+        <div class="category-wrapper" id="cat-abadas">
             <div class="category-title"><h2>ABADÁS</h2><div class="line"></div></div>
             <div class="carousel-container">
                 <button class="nav-btn prev-btn" onclick="sideScroll('carousel-abadas', 'left')"><i class="ph ph-caret-left"></i></button>
@@ -199,12 +237,11 @@
             </div>
         </div>
 
-
-        <div class="category-wrapper">
+        <div class="category-wrapper" id="cat-terceirao">
             <div class="category-title"><h2>TERCEIRÃO</h2><div class="line"></div></div>
             <div class="carousel-container">
-                <button class="nav-btn prev-btn" onclick="sideScroll('carousel-terceirão', 'left')"><i class="ph ph-caret-left"></i></button>
-                <div class="grid-products" id="carousel-terceirão">
+                <button class="nav-btn prev-btn" onclick="sideScroll('carousel-terceirao', 'left')"><i class="ph ph-caret-left"></i></button>
+                <div class="grid-products" id="carousel-terceirao">
                     <div class="card"><div class="card-img"><img src="TERCEIRÃO/01.png"></div><div class="card-info"><h3 class="card-title">TERCEIRÃO 01</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_01')">COMPRAR</button></div></div></div>
                     <div class="card"><div class="card-img"><img src="TERCEIRÃO/02.png"></div><div class="card-info"><h3 class="card-title">TERCEIRÃO 02</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_02')">COMPRAR</button></div></div></div>
                     <div class="card"><div class="card-img"><img src="TERCEIRÃO/03.png"></div><div class="card-info"><h3 class="card-title">TERCEIRÃO 03</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_03')">COMPRAR</button></div></div></div>
@@ -212,13 +249,12 @@
                     <div class="card"><div class="card-img"><img src="TERCEIRÃO/05.png"></div><div class="card-info"><h3 class="card-title">TERCEIRÃO 05</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_05')">COMPRAR</button></div></div></div>
                     <div class="card"><div class="card-img"><img src="TERCEIRÃO/06.png"></div><div class="card-info"><h3 class="card-title">TERCEIRÃO 06</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_06')">COMPRAR</button></div></div></div>
                 </div>
-                <button class="nav-btn next-btn" onclick="sideScroll('carousel-terceirão', 'right')"><i class="ph ph-caret-right"></i></button>
+                <button class="nav-btn next-btn" onclick="sideScroll('carousel-terceirao', 'right')"><i class="ph ph-caret-right"></i></button>
             </div>
-        </div
+        </div>
 
-        
-        <div class="category-wrapper">
-            <div class="category-title"><h2>Futebol</h2><div class="line"></div></div>
+        <div class="category-wrapper" id="cat-futebol">
+            <div class="category-title"><h2>FUTEBOL</h2><div class="line"></div></div>
             <div class="carousel-container">
                 <button class="nav-btn prev-btn" onclick="sideScroll('carousel-futebol', 'left')"><i class="ph ph-caret-left"></i></button>
                 <div class="grid-products" id="carousel-futebol">
@@ -251,88 +287,80 @@
     </footer>
 
     <script>
-    function sideScroll(elementId, direction) {
-        const container = document.getElementById(elementId);
-        if (direction === 'left') container.scrollLeft -= 300;
-        else container.scrollLeft += 300;
-    }
-
-    function irParaPagamento(link) {
-        const usuarioLogado = localStorage.getItem('usuario_nome');
-        if (!usuarioLogado) {
-            alert("Você precisa estar logado para comprar!");
-            window.location.href = "login.html";
-        } else {
-            window.location.href = link;
+        function sideScroll(elementId, direction) {
+            const container = document.getElementById(elementId);
+            container.scrollLeft += direction === 'left' ? -300 : 300;
         }
-    }
 
-    function logoutUser() {
-        localStorage.removeItem('usuario_nome');
-        window.location.reload();
-    }
-
-    window.addEventListener('load', () => {
-        const nomeUsuario = localStorage.getItem('usuario_nome');
-        const infoBox = document.getElementById('user-info-box');
-        const dropdown = document.getElementById('user-dropdown');
-        if (nomeUsuario) {
-            document.getElementById('user-name').innerText = nomeUsuario.split(' ')[0].toUpperCase();
-        } else {
-            if(dropdown) dropdown.style.display = 'none';
-            if(infoBox) infoBox.onclick = () => window.location.href = "login.html";
+        function filtrarCategoria(idCategoria) {
+            const categorias = document.querySelectorAll('.category-wrapper');
+            const hero = document.getElementById('hero-banner');
+            categorias.forEach(cat => {
+                const grid = cat.querySelector('.grid-products');
+                const btns = cat.querySelectorAll('.nav-btn');
+                if (idCategoria === 'all') {
+                    cat.style.display = "block";
+                    grid.style.flexWrap = "nowrap";
+                    grid.style.overflowX = "hidden";
+                    btns.forEach(b => b.style.display = "flex");
+                    hero.style.display = "block";
+                } else if (cat.id === idCategoria) {
+                    cat.style.display = "block";
+                    grid.style.flexWrap = "wrap"; 
+                    grid.style.overflowX = "visible";
+                    btns.forEach(b => b.style.display = "none"); 
+                    hero.style.display = "none"; 
+                    window.scrollTo({ top: 120, behavior: 'smooth' });
+                } else {
+                    cat.style.display = "none";
+                }
+            });
         }
-    });
 
-    // --- NOVA PESQUISA QUE FUNCIONA ---
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
+        function irParaPagamento(link) {
+            if (!localStorage.getItem('usuario_nome')) {
+                alert("Você precisa estar logado para comprar!");
+                window.location.href = "login.html";
+            } else { window.location.href = link; }
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('usuario_nome');
+            window.location.reload();
+        }
+
+        // Script de Busca
+        const searchInput = document.getElementById('search-input');
         searchInput.addEventListener('input', function() {
             const termo = this.value.toLowerCase().trim();
             const categorias = document.querySelectorAll('.category-wrapper');
-
             categorias.forEach(cat => {
                 const grid = cat.querySelector('.grid-products');
                 const cards = cat.querySelectorAll('.card');
                 let temResultado = false;
-
                 cards.forEach(card => {
                     const titulo = card.querySelector('.card-title').innerText.toLowerCase();
                     if (titulo.includes(termo)) {
                         card.style.display = "block";
                         temResultado = true;
-                    } else {
-                        card.style.display = "none";
-                    }
+                    } else { card.style.display = "none"; }
                 });
-
-                // Se estiver pesquisando, desativa o carrossel para mostrar em grade
                 if (termo !== "") {
                     grid.style.flexWrap = "wrap";
-                    grid.style.overflowX = "visible";
                     cat.style.display = temResultado ? "block" : "none";
                 } else {
-                    // Volta ao normal (carrossel) se a busca estiver vazia
                     grid.style.flexWrap = "nowrap";
-                    grid.style.overflowX = "auto";
                     cat.style.display = "block";
                 }
             });
         });
-    }
-</script>
+
+        window.addEventListener('load', () => {
+            const nomeUsuario = localStorage.getItem('usuario_nome');
+            if (nomeUsuario) {
+                document.getElementById('user-name').innerText = nomeUsuario.split(' ')[0].toUpperCase();
+            }
+        });
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
