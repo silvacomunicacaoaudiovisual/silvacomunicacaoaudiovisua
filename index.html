@@ -301,7 +301,7 @@
             <div class="carousel-container">
                 <button class="nav-btn prev-btn" onclick="sideScroll('carousel-abadas', 'left')"><i class="ph ph-caret-left"></i></button>
                 <div class="grid-products" id="carousel-abadas">
-                    <div class="card"><div class="card-img"><img src="ABADÁS 2026/01.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 01</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('https://checkout.infinitepay.io/silva_grafica/3XYMBKM2HX')">COMPRAR</button></div></div></div>
+                    <div class="card"><div class="card-img"><img src="ABADÁS 2026/01.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 01</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('abada01', 'https://checkout.infinitepay.io/silva_grafica/3XYMBKM2HX')">COMPRAR</button></div></div></div>
                     <div class="card"><div class="card-img"><img src="ABADÁS 2026/02.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 02</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_02')">COMPRAR</button></div></div></div>
                     <div class="card"><div class="card-img"><img src="ABADÁS 2026/03.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 03</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_03')">COMPRAR</button></div></div></div>
                     <div class="card"><div class="card-img"><img src="ABADÁS 2026/04.png"></div><div class="card-info"><h3 class="card-title">ABADÁ 04</h3><div class="card-footer"><span class="price">R$ 10,00</span><button class="btn-buy" onclick="irParaPagamento('LINK_04')">COMPRAR</button></div></div></div>
@@ -401,12 +401,21 @@
             });
         }
 
-        function irParaPagamento(link) {
-            if (!localStorage.getItem('usuario_nome')) {
-                alert("Você precisa estar logado para comprar!");
-                window.location.href = "login.html";
-            } else { window.location.href = link; }
-        }
+     função irParaPagamento(item, linkCheckout) {
+    // 1. Verifica login
+    se (!armazenamento local.obterItem('usuario_nome')) {
+        alerta("Você precisa estar logado para comprar!");
+        janela.localização.href = "login.html";
+        retornar;
+    } 
+
+    // 2. Abre o checkout da InfinitePay em uma nova aba para o cliente pagar
+    janela.abrir(linkCheckout, '_blank');
+
+    // 3. Muda a página atual para a tela de confirmação com o item certo
+    // Isso faz sair do "Processando..." e mostrar o produto igual na sua foto
+    janela.localização.href = "confirmacao.html?item=" + item;
+}
 
         function logoutUser() {
             localStorage.removeItem('usuario_nome');
@@ -448,6 +457,7 @@
     </script>
 </body>
 </html>
+
 
 
 
