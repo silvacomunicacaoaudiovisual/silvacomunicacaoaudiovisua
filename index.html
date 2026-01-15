@@ -401,22 +401,12 @@
             });
         }
 
-     função irParaPagamento(item, linkCheckout) {
-    // 1. Verifica login
-    se (!armazenamento local.obterItem('usuario_nome')) {
-        alerta("Você precisa estar logado para comprar!");
-        janela.localização.href = "login.html";
-        retornar;
-    } 
-
-    // 2. Abre o checkout da InfinitePay em uma nova aba para o cliente pagar
-    janela.abrir(linkCheckout, '_blank');
-
-    // 3. Muda a página atual para a tela de confirmação com o item certo
-    // Isso faz sair do "Processando..." e mostrar o produto igual na sua foto
-    janela.localização.href = "confirmacao.html?item=" + item;
-}
-
+     function irParaPagamento(link) {
+            if (!localStorage.getItem('usuario_nome')) {
+                alert("Você precisa estar logado para comprar!");
+                window.location.href = "login.html";
+            } else { window.location.href = link; }
+        }
         function logoutUser() {
             localStorage.removeItem('usuario_nome');
             window.location.reload();
@@ -457,6 +447,7 @@
     </script>
 </body>
 </html>
+
 
 
 
