@@ -163,15 +163,60 @@
         .payment-methods img { max-width: 250px; height: auto; display: block; }
         .copyright { opacity: 0.3; font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; }
 
-        @media (max-width: 768px) {
-            body { padding-top: 140px; }
-            .logo span { display: none; }
-            .header-top { flex-wrap: wrap; }
-            .search-container { order: 3; width: 100%; max-width: 100%; }
-            .grid-products { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .card { flex: 0 0 240px; }
-            .nav-btn { display: none; }
-        }
+@media (max-width: 768px) {
+    /* Mantém o header fixo e evita que os itens sumam */
+    body { padding-top: 100px; }
+
+    /* Ajusta o topo para não quebrar linha */
+    .header-top {
+        padding: 5px 2%;
+        flex-wrap: nowrap; /* Impede de ir para baixo */
+        justify-content: space-between;
+    }
+
+    /* Esconde o texto longo da logo, deixa só o ícone para ganhar espaço */
+    .logo span { display: none; }
+    .logo img { height: 35px; }
+
+    /* Diminui a barra de pesquisa para caber no meio */
+    .search-container {
+        margin: 0 10px;
+        max-width: 150px; /* Ajusta conforme necessário */
+    }
+    .search-input-wrapper { height: 32px; padding: 0 8px; }
+    .search-input-wrapper input { font-size: 0.7rem; }
+
+    /* Ajusta ícones da direita */
+    .header-actions { gap: 10px; }
+    .action-item i { font-size: 1.1rem; }
+    .action-item span { font-size: 0.55rem; }
+
+    /* --- MENU VERMELHO IGUAL AO PC --- */
+    .nav-categories {
+        display: flex !important;
+        flex-wrap: nowrap !important; /* Mantém tudo em uma linha só */
+        overflow-x: auto; /* Permite deslizar com o dedo para os lados */
+        justify-content: flex-start;
+        padding: 8px 10px;
+        gap: 15px;
+        -webkit-overflow-scrolling: touch; /* Deixa o deslize suave no iPhone */
+    }
+
+    .nav-categories a {
+        font-size: 0.65rem;
+        white-space: nowrap; /* Não deixa o texto quebrar em 2 linhas */
+    }
+
+    /* --- CORREÇÃO DO MENU SUSPENSO (LOGIN) --- */
+    .dropdown-content {
+        position: fixed; /* Fixa na tela para não ser cortado */
+        top: 55px;
+        right: 10px;
+        background-color: #000000 !important;
+        z-index: 10000 !important;
+        width: 160px;
+    }
+}
     </style>
 </head>
 <body>
@@ -374,4 +419,5 @@
     </script>
 </body>
 </html>
+
 
