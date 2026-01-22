@@ -237,6 +237,25 @@
         flex: 0 0 220px; /* Diminuído levemente para mostrar o começo do próximo card */
     }
 
+        /* --- CORREÇÃO DAS IMAGENS CORTADAS (ADICIONEI AQUI) --- */
+    .card-img {
+        height: 220px !important; /* Altura para combinar com a largura do card */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #fff !important;
+        padding: 0px !important;
+        overflow: hidden !important;
+    }
+
+    .card-img img {
+        max-width: 100% !important; /* Impede que a camisa saia do card */
+        max-height: 100% !important; /* Impede que a camisa corte no fundo */
+        object-fit: contain !important; /* Faz a arte inteira aparecer */
+        width: auto !important;
+        height: auto !important;
+    }
+
     /* --- CORREÇÃO DO MENU SUSPENSO --- */
     .dropdown-content {
         position: fixed; 
@@ -631,6 +650,7 @@
     </script>
 </body>
 </html>
+
 
 
 
