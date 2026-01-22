@@ -148,13 +148,7 @@
         .card:hover { transform: translateY(-8px); border-color: var(--primary); }
         .card-img { width: 100%; height: 300px; background: #fff; display: flex; align-items: center; justify-content: center; }
         /* Isso afeta GERAL (PC e Celular) e resolve o corte */
-.card-img img { 
-    width: auto;
-    height: auto;
-    max-width: 100% !important; /* Limite lateral */
-    max-height: 100% !important; /* Limite vertical */
-    object-fit: contain !important; /* Encaixe sem cortes */
-}
+        .card-img img { max-width: 150%; max-height: 100%; object-fit: contain; }
         .card-info { padding: 1.2rem; background: #121212; }
         .card-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; min-height: 35px; color: #fff; }
         .card-footer { display: flex; gap: 10px; align-items: center; justify-content: space-between; }
