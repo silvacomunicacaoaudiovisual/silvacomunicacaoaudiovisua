@@ -20,214 +20,181 @@
     </div>
 
     <script>
-        // Esta parte lê o que está no link (ex: ?item=abada01)
+        // Esta parte lê o link e resolve o problema dos espaços (%20)
         const urlParams = new URLSearchParams(window.location.search);
-        const item = urlParams.get('item');
+        const itemBruto = urlParams.get('item');
+        const item = itemBruto ? decodeURIComponent(itemBruto) : null;
 
-        // Configuração dos teus 50+ produtos num só lugar
+        // Lista de produtos organizada
         const produtos = {
-
-            'camisa-lobo-paysandu': {
+            // LANÇAMENTOS (Chaves ajustadas para os seus links reais)
+            'Camisa Lobo Paysandu.png': {
                 nome: 'CAMISA LOBO PAYSANDU',
                 imagem: 'LANÇAMENTOS/Camisa Lobo Paysandu.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/Camisa Lobo Paysandu.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/Camisa%20Lobo%20Paysandu.rar'
             },
-            
             'RED BULL BRAGANTINO III': {
                 nome: 'RED BULL BRAGANTINO III',
                 imagem: 'LANÇAMENTOS/RED BULL BRAGANTINO III.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/RED BULL BRAGANTINO III.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/RED%20BULL%20BRAGANTINO%20III.rar'
             },
-
             'AÇAI 01': {
                 nome: 'AÇAI 01',
                 imagem: 'LANÇAMENTOS/AÇAI 01.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/AÇAI 01.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/AÇAI%2001.rar'
             },
-
             'AÇAI 02': {
                 nome: 'AÇAI 02',
                 imagem: 'LANÇAMENTOS/AÇAI 02.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/AÇAI 02.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/AÇAI%2002.rar'
             },
-
             'AÇAI 03': {
                 nome: 'AÇAI 03',
                 imagem: 'LANÇAMENTOS/AÇAI 03.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/AÇAI 03.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/AÇAI%2003.rar'
             },
-
             'ARGENTINA AWAY': {
                 nome: 'ARGENTINA AWAY',
                 imagem: 'LANÇAMENTOS/ARGENTINA AWAY.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/ARGENTINA AWAY.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/ARGENTINA%20AWAY.rar'
             },
-
             'BOCA JR': {
                 nome: 'BOCA JR',
                 imagem: 'LANÇAMENTOS/BOCA JR.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/BOCA JR.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/BOCA%20JR.rar'
             },
-
             'BRASIL FAVELA': {
                 nome: 'BRASIL FAVELA',
                 imagem: 'LANÇAMENTOS/BRASIL FAVELA.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/BRASIL FAVELA.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/BRASIL%20FAVELA.rar'
             },
-
             'BRASIL HOME': {
                 nome: 'BRASIL HOME',
                 imagem: 'LANÇAMENTOS/BRASIL HOME.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/BRASIL HOME.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/BRASIL%20HOME.rar'
             },
-            
             'DRAGÃO ABSTRATO': {
                 nome: 'DRAGÃO ABSTRATO',
                 imagem: 'LANÇAMENTOS/DRAGAO ABSTRATO.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/DRAGAO ABSTRATO.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/DRAGAO%20ABSTRATO.rar'
             },
-
             'ESCORPION PRIME': {
                 nome: 'ESCORPION PRIME',
                 imagem: 'LANÇAMENTOS/ESCORPION PRIMEO.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/ESCORPION PRIME.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/ESCORPION%20PRIME.rar'
             },
-
             'FRANÇA': {
                 nome: 'FRANÇA',
                 imagem: 'LANÇAMENTOS/FRANÇA.png',
                 download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/FRANÇA.rar'
             },
-
             'JAPAN JFA': {
                 nome: 'JAPAN JFA',
                 imagem: 'LANÇAMENTOS/JAPAN JFA.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/JAPAN JFA.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/JAPAN%20JFA.rar'
             },
-
             'LOBO GUERREIRO': {
                 nome: 'LOBO GUERREIRO',
                 imagem: 'LANÇAMENTOS/LOBO GUERREIRO.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/LOBO GUERREIRO.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/LOBO%20GUERREIRO.rar'
             },
-
             'ONDA AZUL': {
                 nome: 'ONDA AZUL',
                 imagem: 'LANÇAMENTOS/ONDA AZUL.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/ONDA AZUL.rar'
-            }
-
-
-                
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/ONDA%20AZUL.rar'
+            },
             'SÃO PAULO': {
                 nome: 'SÃO PAULO',
                 imagem: 'LANÇAMENTOS/SAO PAULO.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/SAO PAULO.rar'
-            }
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/LANÇAMENTOS/SAO%20PAULO.rar'
+            },
 
-            
-            
+            // ABADÁS 2026
             'abada01': {
                 nome: 'ABADÁ 01',
                 imagem: 'ABADÁS 2026/01.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/01.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/01.rar'
             },
             'abada02': {
                 nome: 'ABADÁ 02',
                 imagem: 'ABADÁS 2026/02.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/02.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/02.rar'
             },
-            
             'abada03': {
                 nome: 'ABADÁ 03',
                 imagem: 'ABADÁS 2026/03.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/03.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/03.rar'
             },
-
             'abada04': {
                 nome: 'ABADÁ 04',
                 imagem: 'ABADÁS 2026/04.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/04.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/04.rar'
             },
-
             'abada05': {
                 nome: 'ABADÁ 05',
                 imagem: 'ABADÁS 2026/05.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/05.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/05.rar'
             },
-
             'abada06': {
                 nome: 'ABADÁ 06',
                 imagem: 'ABADÁS 2026/06.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/06.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/06.rar'
             },
-
             'abada07': {
                 nome: 'ABADÁ 07',
                 imagem: 'ABADÁS 2026/07.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/07.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/07.rar'
             },
-
             'abada08': {
                 nome: 'ABADÁ 08',
                 imagem: 'ABADÁS 2026/08.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/08.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/08.rar'
             },
-
             'abada09': {
                 nome: 'ABADÁ 09',
                 imagem: 'ABADÁS 2026/09.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/09.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/09.rar'
             },
-
             'abada10': {
                 nome: 'ABADÁ 10',
                 imagem: 'ABADÁS 2026/10.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/10.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/10.rar'
             },
-
             'abada11': {
                 nome: 'ABADÁ 11',
                 imagem: 'ABADÁS 2026/11.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/11.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/11.rar'
             },
-
             'abada12': {
                 nome: 'ABADÁ 12',
                 imagem: 'ABADÁS 2026/12.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/12.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/12.rar'
             },
-
             'abada13': {
                 nome: 'ABADÁ 13',
                 imagem: 'ABADÁS 2026/13.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/13.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/13.rar'
             },
-
             'abada14': {
                 nome: 'ABADÁ 14',
                 imagem: 'ABADÁS 2026/14.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/14.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/14.rar'
             },
-
             'abada15': {
                 nome: 'ABADÁ 15',
                 imagem: 'ABADÁS 2026/15.png',
-                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS 2026/15.rar'
+                download: 'https://raw.githubusercontent.com/silvacomunicacaoaudiovisual/silvacomunicacaoaudiovisua/main/ABADÁS%202026/15.rar'
             },
         };
 
-        if (produtos[item]) {
+        // Lógica para preencher a tela
+        if (item && produtos[item]) {
             document.getElementById('nome-produto').innerText = produtos[item].nome;
             document.getElementById('imagem-produto').src = produtos[item].imagem;
             document.getElementById('link-download').href = produtos[item].download;
+        } else {
+            document.getElementById('nome-produto').innerText = "Produto não encontrado";
         }
     </script>
 </body>
 </html>
-
-
-
-
-
-
