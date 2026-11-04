@@ -672,16 +672,48 @@
             }
         });
     </script>
+    <script>
+        /* Artes cadastradas pelo painel (admin.html) -> produtos.json */
+        (function () {
+            const GRIDS = {
+                "LANÇAMENTOS": "carousel-lancamentos",
+                "TREINO ACADEMIA": "carousel-treino-academia",
+                "ABADÁS 2026": "carousel-abadas",
+                "TERCEIRAO E NONO ANO": "carousel-terceirao e nono ano",
+                "FUTEBOL": "carousel-futebol",
+                "INTERCLASSE": "carousel-interclasse",
+                "PESCARIA": "carousel-pescaria",
+                "RELIGIOSAS": "carousel-religiosas",
+                "JUNINAS": "carousel-juninas",
+                "WIND BANNER": "carousel-wind banner"
+            };
+            function criarCard(p) {
+                const card = document.createElement('div'); card.className = 'card';
+                const imgBox = document.createElement('div'); imgBox.className = 'card-img';
+                const img = document.createElement('img'); img.src = encodeURI(p.arte); img.alt = p.titulo;
+                imgBox.appendChild(img);
+                const info = document.createElement('div'); info.className = 'card-info';
+                const h3 = document.createElement('h3'); h3.className = 'card-title'; h3.textContent = p.titulo;
+                const foot = document.createElement('div'); foot.className = 'card-footer';
+                const price = document.createElement('span'); price.className = 'price';
+                price.textContent = Number(p.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                const btn = document.createElement('button'); btn.className = 'btn-buy'; btn.textContent = 'COMPRAR';
+                btn.addEventListener('click', () => irParaPagamento(p.link));
+                foot.append(price, btn); info.append(h3, foot); card.append(imgBox, info);
+                return card;
+            }
+            fetch('produtos.json?v=' + Date.now())
+                .then(r => r.ok ? r.json() : [])
+                .then(lista => {
+                    if (!Array.isArray(lista)) return;
+                    lista.slice().sort((a, b) => String(a.criadoEm).localeCompare(String(b.criadoEm)))
+                        .forEach(p => {
+                            const grid = document.getElementById(GRIDS[p.categoria]);
+                            if (grid && p.link) grid.insertBefore(criarCard(p), grid.firstChild);
+                        });
+                })
+                .catch(() => {});
+        })();
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
