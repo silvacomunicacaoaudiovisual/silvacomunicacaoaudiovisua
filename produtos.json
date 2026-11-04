@@ -1,15 +1,5 @@
 [
   {
-    "id": "mw26iczv",
-    "titulo": "CAMISA VOLEI",
-    "valor": 4,
-    "link": "https://checkout.infinitepay.io/silva_grafica?lenc=G8gAYGTimvdkD1RN3VqLCN3NN4Fq8Z1PJwcOj2oraAsDSyCyQBMuyIuV5oRtjyq230Ky1pP1J7Nzb4FRrcp6fsR7PSat7rzIGuOi3qoUB3u535yH4MDByvwBu5vqc5cEx4gEMPVsxTiisY8Y8tVgNr2PTS_ZbNz989sA1f6e1osBYCLIEHSFk9ORAA.v1.6ffe59a0049ce622",
-    "categoria": "JUNINAS",
-    "arte": "JUNINAS/camisa-volei.jpg",
-    "arquivo": "ARQUIVOS/camisa-volei.cdr",
-    "criadoEm": "2026-11-04T13:55:33.987Z"
-  },
-  {
     "id": "ant-lancamentos-01",
     "legacy": true,
     "categoria": "LANÇAMENTOS",
