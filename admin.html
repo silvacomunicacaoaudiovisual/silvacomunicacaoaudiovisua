@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel de artes · Silva Comunicação</title>
+<style>
+  :root{
+    --bg:#eef0f4; --panel:#ffffff; --ink:#151a24; --muted:#5f6878; --line:#d9dde5;
+    --cyan:#0b8aa6; --magenta:#b3175b; --ok:#16793f; --err:#b42318; --field:#f7f8fa;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12151b; --panel:#1b1f27; --ink:#eceff4; --muted:#9aa3b2; --line:#2e3441;
+      --cyan:#38bdd8; --magenta:#f0568f; --ok:#4cc38a; --err:#ff7b72; --field:#151922;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font:16px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    padding:24px 16px 64px;
+  }
+  .wrap{max-width:980px; margin:0 auto; display:grid; gap:20px}
+  header{display:flex; align-items:center; gap:14px}
+  header .bar{width:6px; align-self:stretch; border-radius:3px;
+    background:linear-gradient(var(--cyan) 50%, var(--magenta) 50%)}
+  h1{margin:0; font-size:1.5rem; letter-spacing:-.01em}
+  header p{margin:2px 0 0; color:var(--muted); font-size:.95rem}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px}
+  .card h2{margin:0 0 14px; font-size:1.1rem}
+  label{display:block; font-weight:600; font-size:.9rem; margin-bottom:6px}
+  input[type=text], input[type=password], select{
+    width:100%; padding:10px 12px; font:inherit; color:var(--ink);
+    background:var(--field); border:1px solid var(--line); border-radius:6px;
+  }
+  input:focus-visible, select:focus-visible, button:focus-visible, .drop:focus-within{
+    outline:2px solid var(--cyan); outline-offset:2px;
+  }
+  .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(220px,1fr))}
+  .hint{color:var(--muted); font-size:.85rem; margin-top:4px}
+  details summary{cursor:pointer; font-weight:600}
+  details .grid{margin-top:14px}
+  .drop{
+    display:flex; align-items:center; gap:14px; padding:14px; min-height:120px;
+    border:2px dashed var(--line); border-radius:8px; background:var(--field); cursor:pointer;
+  }
+  .drop input{position:absolute; opacity:0; width:1px; height:1px}
+  .drop .thumb{width:92px; height:92px; flex:none; border-radius:6px; background:var(--line) center/contain no-repeat}
+  .drop .txt strong{display:block}
+  .drop .txt span{color:var(--muted); font-size:.85rem; word-break:break-all}
+  .actions{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:18px}
+  button{
+    font:inherit; font-weight:600; padding:11px 20px; border-radius:6px; border:0; cursor:pointer;
+    background:var(--cyan); color:#fff;
+  }
+  button.sec{background:transparent; color:var(--ink); border:1px solid var(--line)}
+  button.danger{background:transparent; color:var(--err); border:1px solid var(--line); padding:6px 12px; font-size:.85rem}
+  button:disabled{opacity:.55; cursor:progress}
+  #status{margin-top:14px; font-size:.92rem; white-space:pre-line}
+  #status.ok{color:var(--ok)} #status.err{color:var(--err)}
+  .toolbar{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:12px}
+  .toolbar input, .toolbar select{width:auto; flex:1 1 200px}
+  .list{display:grid; gap:10px}
+  .row{display:grid; grid-template-columns:64px 1fr auto; gap:14px; align-items:center;
+       padding:10px; border:1px solid var(--line); border-radius:8px}
+  .row img{width:64px; height:64px; object-fit:contain; background:var(--field); border-radius:6px}
+  .row .t{font-weight:600}
+  .row .m{color:var(--muted); font-size:.85rem; word-break:break-all}
+  .empty{color:var(--muted); padding:18px 0; text-align:center}
+  .hidden{display:none}
+  @media (prefers-reduced-motion: no-preference){ button{transition:opacity .15s} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="bar" aria-hidden="true"></div>
+    <div>
+      <h1>Painel de artes</h1>
+      <p>Cadastre uma arte nova: ela é enviada para o repositório do site e entra no catálogo.</p>
+    </div>
+  </header>
+
+  <section class="card">
+    <details id="cfgBox">
+      <summary>Conexão com o GitHub</summary>
+      <div class="grid">
+        <div><label for="cUser">Usuário do GitHub</label><input type="text" id="cUser" value="silvacomunicacaoaudiovisual" autocomplete="off"></div>
+        <div><label for="cRepo">Nome do repositório</label><input type="text" id="cRepo" placeholder="ex.: silvacomunicacaoaudiovisual.github.io" autocomplete="off"></div>
+        <div><label for="cBranch">Branch</label><input type="text" id="cBranch" value="main" autocomplete="off"></div>
+        <div>
+          <label for="cHandle">Handle da InfinitePay</label>
+          <input type="text" id="cHandle" value="silva_grafica" autocomplete="off">
+          <div class="hint">Sua InfiniteTag, sem o $. Usada para gerar os links de pagamento.</div>
+        </div>
+        <div>
+          <label for="cToken">Token de acesso</label>
+          <input type="password" id="cToken" placeholder="github_pat_..." autocomplete="off">
+          <div class="hint">Token fine-grained com permissão <b>Contents: Read and write</b> só neste repositório.</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" id="btnSaveCfg">Salvar conexão</button>
+        <button type="button" class="sec" id="btnForget">Esquecer token</button>
+        <span class="hint">O token fica guardado só neste navegador.</span>
+      </div>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>Nova arte</h2>
+    <div class="grid">
+      <div>
+        <label for="fTitulo">Título</label>
+        <input type="text" id="fTitulo" placeholder="Ex.: CAMISA LOBO PAYSANDU" autocomplete="off">
+      </div>
+      <div>
+        <label for="fValor">Valor (R$)</label>
+        <input type="text" id="fValor" inputmode="decimal" placeholder="10,00" autocomplete="off">
+        <div class="hint">Aparece no card e é o valor cobrado no link de pagamento.</div>
+      </div>
+      <div>
+        <label for="fLink">Link de pagamento (opcional)</label>
+        <input type="text" id="fLink" placeholder="https://checkout.infinitepay.io/silva_grafica/..." autocomplete="off">
+        <div class="hint">Deixe em branco: o painel gera o link com o valor ao lado.</div>
+      </div>
+      <div>
+        <label for="fCat">Categoria</label>
+        <select id="fCat"></select>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:16px">
+      <div>
+        <label for="fArte">Arte da camisa (imagem)</label>
+        <label class="drop" for="fArte" style="font-weight:400; margin:0">
+          <input type="file" id="fArte" accept="image/png,image/jpeg,image/webp">
+          <div class="thumb" id="arteThumb"></div>
+          <div class="txt"><strong>Escolher imagem</strong><span id="arteName">PNG, JPG ou WEBP. É o que aparece na vitrine.</span></div>
+        </label>
+      </div>
+      <div>
+        <label for="fArquivo">Arquivo para download</label>
+        <label class="drop" for="fArquivo" style="font-weight:400; margin:0">
+          <input type="file" id="fArquivo">
+          <div class="thumb" id="arqThumb" style="display:grid; place-items:center; font-weight:700; color:var(--muted)">CDR</div>
+          <div class="txt"><strong>Escolher arquivo</strong><span id="arqName">CorelDRAW, ZIP ou RAR. Até 50 MB.</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="btnAdd">Adicionar ao catálogo</button>
+      <button type="button" class="sec" id="btnClear">Limpar</button>
+    </div>
+    <div id="status" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="card">
+    <h2>Artes cadastradas pelo painel</h2>
+    <div class="toolbar">
+      <input type="text" id="qBusca" placeholder="Buscar por título">
+      <select id="qCat"><option value="">Todas as categorias</option></select>
+      <button type="button" class="sec" id="btnReload">Atualizar lista</button>
+    </div>
+    <div class="list" id="lista"><div class="empty">Conecte o GitHub para carregar a lista.</div></div>
+  </section>
+
+</div>
+
+<script>
+const CATEGORIAS = [
+  ["LANÇAMENTOS","Lançamentos"], ["TREINO ACADEMIA","Treino academia"], ["ABADÁS 2026","Abadás"],
+  ["TERCEIRAO E NONO ANO","Terceirão e nono ano"], ["FUTEBOL","Futebol"], ["INTERCLASSE","Interclasse"],
+  ["PESCARIA","Pescaria"], ["RELIGIOSAS","Religiosas"], ["JUNINAS","Juninas"], ["WIND BANNER","Wind banner"]
+];
+const JSON_PATH = "produtos.json";
+const MAX_MB = 50;
+const LS_KEY = "silva-painel-cfg";
+const $ = s => document.querySelector(s);
+
+let produtos = [];
+
+/* ---------- configuração ---------- */
+function cfg(){
+  return {
+    user: $("#cUser").value.trim(), repo: $("#cRepo").value.trim(),
+    branch: $("#cBranch").value.trim() || "main", token: $("#cToken").value.trim(),
+    handle: $("#cHandle").value.trim().replace(/^\$/, "")
+  };
+}
+function loadCfg(){
+  try{
+    const c = JSON.parse(localStorage.getItem(LS_KEY) || "null");
+    if(c){ $("#cUser").value=c.user||$("#cUser").value; $("#cRepo").value=c.repo||""; $("#cBranch").value=c.branch||"main"; $("#cToken").value=c.token||""; $("#cHandle").value=c.handle||"silva_grafica"; }
+  }catch(e){}
+  if(!cfg().repo || !cfg().token) $("#cfgBox").open = true;
+}
+function saveCfg(){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(cfg())); }catch(e){}
+  setStatus("Conexão salva neste navegador.", "ok");
+  carregarLista();
+}
+function forgetToken(){
+  $("#cToken").value = "";
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(cfg())); }catch(e){}
+  setStatus("Token removido deste navegador.", "ok");
+}
+function precisaConfig(){
+  const c = cfg();
+  if(!c.user || !c.repo || !c.token){ $("#cfgBox").open = true; setStatus("Preencha usuário, repositório e token em “Conexão com o GitHub”.", "err"); return true; }
+  return false;
+}
+
+/* ---------- utilidades ---------- */
+function setStatus(msg, kind){ const s=$("#status"); s.textContent=msg||""; s.className=kind||""; }
+function slug(t){
+  return t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-+|-+$/g,"").toLowerCase() || "arte";
+}
+function extDe(nome){ const m = nome.toLowerCase().match(/\.([a-z0-9]{1,6})$/); return m ? m[1] : "bin"; }
+function encPath(p){ return p.split("/").map(encodeURIComponent).join("/"); }
+function brl(n){ return Number(n).toLocaleString("pt-BR",{style:"currency",currency:"BRL"}); }
+function parseValor(v){
+  const n = parseFloat(String(v).trim().replace(/[R$\s]/g,"").replace(/\./g,"").replace(",","."));
+  return isFinite(n) && n >= 0 ? Math.round(n*100)/100 : NaN;
+}
+function fileToB64(file){
+  return new Promise((res, rej)=>{
+    const r = new FileReader();
+    r.onload = () => res(String(r.result).split(",")[1]);
+    r.onerror = () => rej(new Error("Não foi possível ler “"+file.name+"”."));
+    r.readAsDataURL(file);
+  });
+}
+function strToB64(s){
+  const bytes = new TextEncoder().encode(s); let bin="";
+  for(let i=0;i<bytes.length;i+=0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i,i+0x8000));
+  return btoa(bin);
+}
+function b64ToStr(b64){
+  const bin = atob(b64.replace(/\s/g,"")); const bytes = new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+function rawUrl(path){ const c=cfg(); return `https://raw.githubusercontent.com/${c.user}/${c.repo}/${c.branch}/${encPath(path)}`; }
+
+/* ---------- API do GitHub ---------- */
+function gh(method, path, body){
+  const c = cfg();
+  let url = `https://api.github.com/repos/${c.user}/${c.repo}/contents/${encPath(path)}`;
+  if(method === "GET") url += `?ref=${encodeURIComponent(c.branch)}&t=${Date.now()}`;
+  return fetch(url, {
+    method,
+    headers: { "Authorization":"Bearer "+c.token, "Accept":"application/vnd.github+json", "Content-Type":"application/json" },
+    body: body ? JSON.stringify(body) : undefined
+  });
+}
+async function erroGh(r){
+  let msg = ""; try{ msg = (await r.json()).message || ""; }catch(e){}
+  if(r.status===401) return "Token inválido ou expirado.";
+  if(r.status===403) return "Sem permissão. Confira se o token tem “Contents: Read and write”. " + msg;
+  if(r.status===404) return "Repositório ou branch não encontrado. Confira usuário, repositório e branch.";
+  if(r.status===409 || r.status===422) return "Conflito ao gravar (" + msg + "). Tente de novo.";
+  return `Erro ${r.status}. ${msg}`;
+}
+async function existe(path){ const r = await gh("GET", path); return r.status === 200; }
+async function pathLivre(base, ext, id){
+  const p1 = `${base}.${ext}`;
+  return (await existe(p1)) ? `${base}-${id}.${ext}` : p1;
+}
+async function putFile(path, b64, msg, sha){
+  const c = cfg();
+  const r = await gh("PUT", path, { message: msg, content: b64, branch: c.branch, ...(sha ? {sha} : {}) });
+  if(!r.ok) throw new Error(await erroGh(r));
+  return r.json();
+}
+async function lerJson(){
+  const r = await gh("GET", JSON_PATH);
+  if(r.status === 404) return { lista: [], sha: null };
+  if(!r.ok) throw new Error(await erroGh(r));
+  const j = await r.json();
+  let lista = [];
+  try{ lista = JSON.parse(b64ToStr(j.content)); }catch(e){ throw new Error("O produtos.json do repositório está inválido."); }
+  if(!Array.isArray(lista)) lista = [];
+  return { lista, sha: j.sha };
+}
+async function gravarJson(lista, sha, msg){
+  return putFile(JSON_PATH, strToB64(JSON.stringify(lista, null, 2)), msg, sha);
+}
+async function apagarArquivo(path){
+  const r = await gh("GET", path);
+  if(!r.ok) return;
+  const j = await r.json();
+  await gh("DELETE", path, { message: "Painel: remove "+path, sha: j.sha, branch: cfg().branch });
+}
+
+/* ---------- link de pagamento (InfinitePay) ---------- */
+const SITE_URL = "https://www.silvacomunicacaoaudiovisual.shop";
+function acharUrl(o){
+  if(typeof o === "string") return /^https:\/\//.test(o) ? o : null;
+  if(o && typeof o === "object"){
+    for(const k of ["url","checkout_url","checkoutUrl","link"]) if(typeof o[k]==="string" && o[k].startsWith("https://")) return o[k];
+    for(const v of Object.values(o)){ const u = acharUrl(v); if(u) return u; }
+  }
+  return null;
+}
+async function gerarLink(titulo, valor, id){
+  const c = cfg();
+  if(!c.handle) throw new Error("preencha o handle da InfinitePay em “Conexão com o GitHub”.");
+  let r;
+  try{
+    r = await fetch("https://api.checkout.infinitepay.io/links", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        handle: c.handle, order_nsu: id, redirect_url: SITE_URL + "/downloads.html",
+        items: [{ quantity: 1, price: Math.round(valor*100), description: titulo }]
+      })
+    });
+  }catch(e){ throw new Error("o navegador não conseguiu falar com a InfinitePay (pode ser bloqueio de segurança do navegador)."); }
+  if(!r.ok) throw new Error(`a InfinitePay recusou o pedido (erro ${r.status}).`);
+  let j; try{ j = await r.json(); }catch(e){ throw new Error("resposta inesperada da InfinitePay."); }
+  const url = acharUrl(j);
+  if(!url) throw new Error("a InfinitePay respondeu, mas sem um link reconhecível.");
+  return url;
+}
+
+/* ---------- formulário ---------- */
+function montarCategorias(){
+  const sel = $("#fCat"), filtro = $("#qCat");
+  sel.innerHTML = CATEGORIAS.map(([v,l])=>`<option value="${v}">${l}</option>`).join("");
+  filtro.innerHTML = `<option value="">Todas as categorias</option>` + CATEGORIAS.map(([v,l])=>`<option value="${v}">${l}</option>`).join("");
+}
+function categoriaEscolhida(){ return $("#fCat").value; }
+
+$("#fArte").addEventListener("change", e=>{
+  const f = e.target.files[0];
+  $("#arteName").textContent = f ? f.name : "PNG, JPG ou WEBP. É o que aparece na vitrine.";
+  $("#arteThumb").style.backgroundImage = f ? `url(${URL.createObjectURL(f)})` : "";
+});
+$("#fArquivo").addEventListener("change", e=>{
+  const f = e.target.files[0];
+  $("#arqName").textContent = f ? `${f.name} (${(f.size/1048576).toFixed(1)} MB)` : "CorelDRAW, ZIP ou RAR. Até 50 MB.";
+  $("#arqThumb").textContent = f ? extDe(f.name).toUpperCase() : "CDR";
+});
+function limpar(){
+  ["#fTitulo","#fValor","#fLink"].forEach(s=>$(s).value="");
+  $("#fArte").value=""; $("#fArquivo").value="";
+  $("#arteName").textContent="PNG, JPG ou WEBP. É o que aparece na vitrine."; $("#arteThumb").style.backgroundImage="";
+  $("#arqName").textContent="CorelDRAW, ZIP ou RAR. Até 50 MB."; $("#arqThumb").textContent="CDR";
+}
+
+async function adicionar(){
+  if(precisaConfig()) return;
+  const titulo = $("#fTitulo").value.trim().toUpperCase();
+  const valor = parseValor($("#fValor").value);
+  const categoria = categoriaEscolhida();
+  const link = $("#fLink").value.trim();
+  const arte = $("#fArte").files[0], arquivo = $("#fArquivo").files[0];
+
+  if(!titulo) return setStatus("Informe o título.", "err");
+  if(isNaN(valor)) return setStatus("Informe o valor, por exemplo 10,00.", "err");
+  if(!categoria) return setStatus("Escolha a categoria.", "err");
+  if(link && !/^https:\/\//i.test(link)) return setStatus("O link de pagamento deve começar com https://", "err");
+  if(!arte) return setStatus("Escolha a imagem da arte.", "err");
+  if(!arquivo) return setStatus("Escolha o arquivo para download.", "err");
+  if(arquivo.size > MAX_MB*1048576) return setStatus(`O arquivo passa de ${MAX_MB} MB. Compacte em ZIP ou use um arquivo menor.`, "err");
+
+  const btn = $("#btnAdd"); btn.disabled = true;
+  const id = Date.now().toString(36), base = slug(titulo);
+  let linkFinal = link;
+  if(!linkFinal){
+    setStatus("Gerando o link de pagamento…");
+    try{ linkFinal = await gerarLink(titulo, valor, id); }
+    catch(e){
+      setStatus("Não consegui gerar o link automaticamente: " + e.message + "\nCrie o link na InfinitePay e cole no campo “Link de pagamento”. Nada foi enviado ao site.", "err");
+      btn.disabled = false; return;
+    }
+  }
+  try{
+    setStatus("1/4 Preparando arquivos…");
+    const artePath = await pathLivre(`${categoria}/${base}`, extDe(arte.name), id);
+    const arqPath  = await pathLivre(`ARQUIVOS/${base}`, extDe(arquivo.name), id);
+
+    setStatus("2/4 Enviando a arte…");
+    await putFile(artePath, await fileToB64(arte), `Painel: arte ${titulo}`);
+
+    setStatus("3/4 Enviando o arquivo para download…");
+    await putFile(arqPath, await fileToB64(arquivo), `Painel: arquivo ${titulo}`);
+
+    setStatus("4/4 Atualizando o catálogo…");
+    const { lista, sha } = await lerJson();
+    lista.push({ id, titulo, valor, link: linkFinal, categoria, arte: artePath, arquivo: arqPath, criadoEm: new Date().toISOString() });
+    await gravarJson(lista, sha, `Painel: adiciona ${titulo}`);
+
+    setStatus(`“${titulo}” adicionada. O site atualiza em cerca de 1 minuto.`, "ok");
+    limpar();
+    await carregarLista();
+  }catch(e){
+    setStatus("Não foi possível concluir: " + e.message + "\nSe a arte já subiu, confira o repositório antes de tentar de novo.", "err");
+  }finally{ btn.disabled = false; }
+}
+
+/* ---------- lista ---------- */
+async function carregarLista(){
+  const box = $("#lista");
+  const c = cfg();
+  if(!c.repo || !c.token){ box.innerHTML = `<div class="empty">Conecte o GitHub para carregar a lista.</div>`; return; }
+  box.innerHTML = `<div class="empty">Carregando…</div>`;
+  try{
+    produtos = (await lerJson()).lista;
+    renderLista();
+  }catch(e){ box.innerHTML = `<div class="empty" style="color:var(--err)">${e.message}</div>`; }
+}
+function esc(s){ return String(s).replace(/[&<>"']/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch])); }
+function renderLista(){
+  const q = $("#qBusca").value.trim().toLowerCase(), cat = $("#qCat").value;
+  const itens = produtos.filter(p => (!cat || p.categoria===cat) && (!q || p.titulo.toLowerCase().includes(q))).slice().reverse();
+  const box = $("#lista");
+  if(!itens.length){ box.innerHTML = `<div class="empty">Nenhuma arte cadastrada pelo painel ainda.</div>`; return; }
+  box.innerHTML = itens.map(p=>`
+    <div class="row">
+      <img src="${esc(rawUrl(p.arte))}" alt="" loading="lazy">
+      <div><div class="t">${esc(p.titulo)} · ${brl(p.valor)}</div><div class="m">${esc(p.categoria)} · ${esc(p.arquivo)}</div></div>
+      <button type="button" class="danger" data-del="${esc(p.id)}">Remover</button>
+    </div>`).join("");
+}
+async function remover(id){
+  const p = produtos.find(x=>x.id===id); if(!p) return;
+  if(!confirm(`Remover “${p.titulo}” do catálogo? A imagem e o arquivo também serão apagados do repositório.`)) return;
+  try{
+    setStatus("Removendo…");
+    const { lista, sha } = await lerJson();
+    await gravarJson(lista.filter(x=>x.id!==id), sha, `Painel: remove ${p.titulo}`);
+    await apagarArquivo(p.arte); await apagarArquivo(p.arquivo);
+    setStatus(`“${p.titulo}” removida.`, "ok");
+    await carregarLista();
+  }catch(e){ setStatus("Não foi possível remover: " + e.message, "err"); }
+}
+
+$("#lista").addEventListener("click", e=>{ const b = e.target.closest("[data-del]"); if(b) remover(b.dataset.del); });
+$("#qBusca").addEventListener("input", renderLista);
+$("#qCat").addEventListener("change", renderLista);
+$("#btnReload").addEventListener("click", carregarLista);
+$("#btnAdd").addEventListener("click", adicionar);
+$("#btnClear").addEventListener("click", ()=>{ limpar(); setStatus(""); });
+$("#btnSaveCfg").addEventListener("click", saveCfg);
+$("#btnForget").addEventListener("click", forgetToken);
+
+montarCategorias();
+loadCfg();
+carregarLista();
+</script>
+</body>
+</html>
