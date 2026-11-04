@@ -8,5 +8,1465 @@
     "arte": "JUNINAS/camisa-volei.jpg",
     "arquivo": "ARQUIVOS/camisa-volei.cdr",
     "criadoEm": "2026-11-04T13:55:33.987Z"
+  },
+  {
+    "id": "ant-lancamentos-01",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "CAMISA LOBO PAYSANDU",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7CYqLD7lbb",
+    "arte": "LANÇAMENTOS/Camisa Lobo Paysandu.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-02",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "RED BULL BRAGANTINO III",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3bHRKiQ0LV",
+    "arte": "LANÇAMENTOS/RED BULL BRAGANTINO III.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-03",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "AÇAI 01",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/GXRKnVTu5",
+    "arte": "LANÇAMENTOS/AÇAI 01.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-04",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "AÇAI 02",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7CYvfpVLv3",
+    "arte": "LANÇAMENTOS/AÇAI 02.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-05",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "AÇAI 03",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3bHTPpVAnB",
+    "arte": "LANÇAMENTOS/AÇAI 03.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-06",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "ARGENTINA AWAY",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1ndjum7J8l",
+    "arte": "LANÇAMENTOS/ARGENTINA AWAY.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-07",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "BOCA JR",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/TlnWtktr9",
+    "arte": "LANÇAMENTOS/BOCA JR.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-08",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "BRASIL FAVELA",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3bHV0khKHB",
+    "arte": "LANÇAMENTOS/BRASIL FAVELA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-09",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "BRASIL HOME",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7CZ0w1yxw7",
+    "arte": "LANÇAMENTOS/BRASIL HOME.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-10",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "DRAGÃO ABSTRATO",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1CQVJ9m5OT",
+    "arte": "LANÇAMENTOS/DRAGAO ABSTRATO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-11",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "ESCORPION PRIME",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/ieikgeYWD",
+    "arte": "LANÇAMENTOS/ESCORPION PRIME.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-12",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "FRANÇA",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1CQXWZHFpV",
+    "arte": "LANÇAMENTOS/FRANÇA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-13",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "JAPAN JFA",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1ndoUfzoLZ",
+    "arte": "LANÇAMENTOS/JAPAN JFA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-14",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "LOBO GUERREIRO",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/8GjA8NbkZ",
+    "arte": "LANÇAMENTOS/LOGO GUERREIRO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-15",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "ONDA AZUL",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/8eRR5Dc9",
+    "arte": "LANÇAMENTOS/ONDA AZUL.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-lancamentos-16",
+    "legacy": true,
+    "categoria": "LANÇAMENTOS",
+    "titulo": "SÃO PAULO",
+    "valor": 15,
+    "link": "https://checkout.infinitepay.io/silva_grafica/bDHPCCo5R",
+    "arte": "LANÇAMENTOS/SAO PAULO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-01",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 01",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1RJUezJGi3",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 01.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-02",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 02",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/2OrABpda11",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 02.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-03",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 03",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1RJV5fYKgl",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 03.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-04",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 04",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/2OrAlixVrn",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 04.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-05",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 05",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7CZXLS6RRD",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 05.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-06",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 06",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/2OrBPPL2s7",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 06.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-07",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 07",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/iekuHcSuB",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 07.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-08",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 08",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1CQb1fitcX",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 08.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-09",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 09",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/2OrCGXcm13",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 09.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-treino-academia-10",
+    "legacy": true,
+    "categoria": "TREINO ACADEMIA",
+    "titulo": "TREINO ACADEMIA 10",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1ndttagxUF",
+    "arte": "TREINO ACADEMIA/CAMISA TREINO 10.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-01",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 01",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3XYMBKM2HX",
+    "arte": "ABADÁS 2026/01.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-02",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 02",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/75owpo70tZ",
+    "arte": "ABADÁS 2026/02.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-03",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 03",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/8nQRinOxL",
+    "arte": "ABADÁS 2026/03.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-04",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 04",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/hz8JbRtOV",
+    "arte": "ABADÁS 2026/04.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-05",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 05",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1PyGsUd0Lh",
+    "arte": "ABADÁS 2026/05.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-06",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 06",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/2McSMsrFMN",
+    "arte": "ABADÁS 2026/06.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-07",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 07",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/75rNx9XIbj",
+    "arte": "ABADÁS 2026/07.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-08",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 08",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1BJETbhkK3",
+    "arte": "ABADÁS 2026/08.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-09",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 09",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/hz8mwiz6x",
+    "arte": "ABADÁS 2026/09.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-10",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 10",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1lxsa3S6cl",
+    "arte": "ABADÁS 2026/10.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-11",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 11",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/75rX0n7vFp",
+    "arte": "ABADÁS 2026/11.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-12",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 12",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/75rXiLbYlR",
+    "arte": "ABADÁS 2026/12.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-13",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 13",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/bsNo2tRh",
+    "arte": "ABADÁS 2026/13.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-14",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 14",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1PyJQdMFjD",
+    "arte": "ABADÁS 2026/14.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-abadas-15",
+    "legacy": true,
+    "categoria": "ABADÁS 2026",
+    "titulo": "ABADÁ 15",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/75rZp2QvqV",
+    "arte": "ABADÁS 2026/15.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-01",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO CEREBRO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3bHt32aXvr",
+    "arte": "TERCEIRAO E NONO ANO/CEREBRO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-02",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO COELHO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7CZrpMHZR7",
+    "arte": "TERCEIRAO E NONO ANO/COELHO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-03",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO CROCODILO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3bHweynfPd",
+    "arte": "TERCEIRAO E NONO ANO/CROCODILO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-04",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO MCQUEEN",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/2OrIjKEQeV",
+    "arte": "TERCEIRAO E NONO ANO/MCQUEEN.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-05",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "NONO ANO FURAÇÃO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/S0Ygj9Mgf",
+    "arte": "TERCEIRAO E NONO ANO/NONO ANO FURAÇAO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-06",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "NONO ANO LEÃO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7E8ynbO1hF",
+    "arte": "TERCEIRAO E NONO ANO/NONO ANO LEAO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-07",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "NONO ANO LOBO CINZA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/2PNhfc3cf9",
+    "arte": "TERCEIRAO E NONO ANO/NONO ANO LOBO CINZA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-08",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO OLDSCOL",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7E9Cq0E2Kz",
+    "arte": "TERCEIRAO E NONO ANO/OLDSCOL.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-09",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO POSEIDON MITOLOGIA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1Rd2n6ksux",
+    "arte": "TERCEIRAO E NONO ANO/POSEIDON MITOLOGIA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-10",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO POSEIDON",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/u19gY4g9V",
+    "arte": "TERCEIRAO E NONO ANO/POSEIDON.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-11",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO RICK",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1Rd3Ls6kLh",
+    "arte": "TERCEIRAO E NONO ANO/RICK.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-12",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO CARTAS COELHO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/bLRKE2Co1",
+    "arte": "TERCEIRAO E NONO ANO/TERCEIRAO CARTAS COELHO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-13",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO GAMEBOY",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/ioWtvyXdD",
+    "arte": "TERCEIRAO E NONO ANO/TERCEIRAO GAMEBOY.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-14",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO URSO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1o2KY4zmc7",
+    "arte": "TERCEIRAO E NONO ANO/TERCEIRAO URSO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-terceirao-e-nono-ano-15",
+    "legacy": true,
+    "categoria": "TERCEIRAO E NONO ANO",
+    "titulo": "TERCEIRÃO VENON",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7E9Lj8BHUT",
+    "arte": "TERCEIRAO E NONO ANO/VENON.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-01",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "CRUZEIRO 2025",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7E9Z0cZ7HN",
+    "arte": "FUTEBOL/CRUZEIRO 2025.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-02",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "FLAMENGO CONCEPT",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1o2OhkbACp",
+    "arte": "FUTEBOL/FLAMENGO CONCEPT.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-03",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "FLAMENGO II 2025",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7T5tpssHz",
+    "arte": "FUTEBOL/FLAMENGO II 2025.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-04",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "PALMEIRAS TERCEIRA CAMISA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7E9j85Ok7j",
+    "arte": "FUTEBOL/PALMEIRAS TERCEIRA CAMISA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-05",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-06",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-07",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-08",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-09",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-10",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-11",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-12",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-13",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-14",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-futebol-15",
+    "legacy": true,
+    "categoria": "FUTEBOL",
+    "titulo": "REAL MADRID",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "FUTEBOL/real.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-01",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "AGUIA VERDE",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7EA8i1TWZj",
+    "arte": "INTERCLASSE/AGUIA VERDE.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-02",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "ARANHA VERMELHA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3c56i1H8TD",
+    "arte": "INTERCLASSE/ARANHA VERMELHA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-03",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "ARGENTINA AMARELO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7EAEKBesOF",
+    "arte": "INTERCLASSE/ARGENTINA AMARELO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-04",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "CACHORRO DOIDO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/nnMLmyMcP",
+    "arte": "INTERCLASSE/CACHORRO DOIDO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-05",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "CARTAS NAIPES",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7EAG989cw3",
+    "arte": "INTERCLASSE/CARTAS NAIPES.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-06",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "CAVEIRA ROXA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7EAHlDVQhL",
+    "arte": "INTERCLASSE/CAVEIRA ROXA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-07",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "CORINGA HAHAHAH",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/S0eMwzjCv",
+    "arte": "INTERCLASSE/CORINGA HAHAHAHA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-08",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "CORUJA NORTUNA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1Ch4RLFLvl",
+    "arte": "INTERCLASSE/CORUJA NORTUNA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-09",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "DRAGAO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/kjR3WNn",
+    "arte": "INTERCLASSE/DRAGAO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-10",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "FENIX",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7EASP1WqZv",
+    "arte": "INTERCLASSE/FENIX.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-11",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "LEAO FOGO AZUL",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7EATGcBSpH",
+    "arte": "INTERCLASSE/LEAO FOGO AZUL.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-12",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "LEAO VERMELHO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3c5F1BP1LP",
+    "arte": "INTERCLASSE/LEAO VERMELHO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-13",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "PANTERA NEGRA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/3c5FPFY5rz",
+    "arte": "INTERCLASSE/PANTERA NEGRA.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-14",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "POLVO AZUL",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/7T6j1eL7b",
+    "arte": "INTERCLASSE/POLVO AZUL.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-interclasse-15",
+    "legacy": true,
+    "categoria": "INTERCLASSE",
+    "titulo": "SUBZERO",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica/1o2d3gGUh1",
+    "arte": "INTERCLASSE/SUBZERO.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-01",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 01",
+    "valor": 10,
+    "link": "LINK_PSG",
+    "arte": "PESCARIA/01.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-02",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 02",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/02.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-03",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 03",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/03.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-04",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 04",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/04.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-05",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 05",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/05.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-06",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 06",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/06.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-07",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 07",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/07.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-08",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 08",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/08.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-09",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 09",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/09.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-10",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 10",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/10.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-11",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 11",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/11.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-12",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 12",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/12.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-13",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 13",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/13.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-14",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 14",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/14.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-pescaria-15",
+    "legacy": true,
+    "categoria": "PESCARIA",
+    "titulo": "PESCARIA 15",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "PESCARIA/15.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-01",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 01",
+    "valor": 10,
+    "link": "LINK_PSG",
+    "arte": "RELIGIOSAS/01.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-02",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 02",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/02.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-03",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 03",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/03.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-04",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 04",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/04.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-05",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 05",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/05.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-06",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 06",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/06.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-07",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 07",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/07.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-08",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 08",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/08.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-09",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 09",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/09.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-10",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 10",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/10.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-11",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 11",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/11.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-12",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 12",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/12.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-13",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 13",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/13.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-14",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 14",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/14.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-religiosas-15",
+    "legacy": true,
+    "categoria": "RELIGIOSAS",
+    "titulo": "RELIGIOSAS 15",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "RELIGIOSAS/15.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-01",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 01",
+    "valor": 10,
+    "link": "LINK_PSG",
+    "arte": "JUNINAS/01.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-02",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 02",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/02.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-03",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 03",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/03.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-04",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 04",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/04.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-05",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 05",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/05.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-06",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 06",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/06.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-07",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 07",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/07.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-08",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 08",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/08.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-09",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 09",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/09.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-10",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 10",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/10.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-11",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 11",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/11.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-12",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 12",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/12.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-13",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 13",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/13.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-14",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 14",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/14.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-juninas-15",
+    "legacy": true,
+    "categoria": "JUNINAS",
+    "titulo": "JUNINAS 15",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "JUNINAS/15.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-01",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 01",
+    "valor": 10,
+    "link": "LINK_PSG",
+    "arte": "WIND BANNER/01.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-02",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 02",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/02.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-03",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 03",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/03.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-04",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 04",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/04.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-05",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 05",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/05.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-06",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 06",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/06.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-07",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 07",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/07.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-08",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 08",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/08.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-09",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 09",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/09.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-10",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 10",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/10.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-11",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 11",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/11.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-12",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 12",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/12.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-13",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 13",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/13.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-14",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 14",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/14.png",
+    "arquivo": ""
+  },
+  {
+    "id": "ant-wind-banner-15",
+    "legacy": true,
+    "categoria": "WIND BANNER",
+    "titulo": "WIND BANNER 15",
+    "valor": 10,
+    "link": "LINK_REAL",
+    "arte": "WIND BANNER/15.png",
+    "arquivo": ""
   }
 ]
