@@ -1468,5 +1468,15 @@
     "arte": "WIND BANNER/barbearia-01.jpg",
     "arquivo": "ARQUIVOS/barbearia-01.cdr",
     "criadoEm": "2026-11-10T12:45:45.446Z"
+  },
+  {
+    "id": "mwaooza4",
+    "titulo": "BARBEARIA 02",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica?lenc=G8gAYBwJdmzJcPBpUxWiz_-5FuZrm0UJ_UW0DmgC0Rfi9_wyCETq6aEG4EW1FbSFgWWBRBZowj_kxUpzwrZHFb6FgNYHJGW9xa2epoPOLHhfd-lHjQ7cQnd8U5_t5TRuQ3B4trJ_6FMVXJw5sakiqAWNfcQwX6V1dRWmD1AX0Z_dBlSd72ldTwETQcagK56cjgQ.v1.29c285f01a4f81cc",
+    "categoria": "WIND BANNER",
+    "arte": "WIND BANNER/barbearia-02.jpg",
+    "arquivo": "ARQUIVOS/barbearia-02.cdr",
+    "criadoEm": "2026-11-10T12:46:49.579Z"
   }
 ]
