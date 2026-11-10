@@ -89,6 +89,31 @@
   </header>
 
   <section class="card">
+    <h2>Clientes cadastrados</h2>
+    <div id="fbLoginBox">
+      <div class="grid">
+        <div><label for="fbEmail">E-mail do administrador</label><input type="text" id="fbEmail" autocomplete="username"></div>
+        <div><label for="fbSenha">Senha</label><input type="password" id="fbSenha" autocomplete="current-password"></div>
+      </div>
+      <div class="actions"><button type="button" id="btnFbLogin">Entrar e ver clientes</button></div>
+      <div class="hint">Use a conta administradora do Firebase, a mesma liberada nas regras do banco.</div>
+    </div>
+    <div id="fbBox" class="hidden">
+      <div class="toolbar">
+        <input type="text" id="qCliente" placeholder="Buscar por nome ou e-mail">
+        <button type="button" class="sec" id="btnFbReload">Atualizar</button>
+        <button type="button" class="sec" id="btnFbCsv">Baixar CSV</button>
+        <button type="button" class="sec" id="btnFbSair">Sair</button>
+      </div>
+      <div class="hint" id="fbCount" style="margin-bottom:10px"></div>
+      <div style="overflow-x:auto">
+        <table class="tbl"><thead><tr><th>Nome</th><th>E-mail</th><th>Cadastro</th><th>Último acesso</th></tr></thead><tbody id="fbTbody"></tbody></table>
+      </div>
+    </div>
+    <div id="fbStatus" class="hint" style="margin-top:12px; white-space:pre-line"></div>
+  </section>
+
+  <section class="card">
     <details id="cfgBox">
       <summary>Conexão com o GitHub</summary>
       <div class="grid">
@@ -174,30 +199,6 @@
   </section>
 
 
-  <section class="card">
-    <h2>Clientes cadastrados</h2>
-    <div id="fbLoginBox">
-      <div class="grid">
-        <div><label for="fbEmail">E-mail do administrador</label><input type="text" id="fbEmail" autocomplete="username"></div>
-        <div><label for="fbSenha">Senha</label><input type="password" id="fbSenha" autocomplete="current-password"></div>
-      </div>
-      <div class="actions"><button type="button" id="btnFbLogin">Entrar e ver clientes</button></div>
-      <div class="hint">Use a conta administradora do Firebase, a mesma liberada nas regras do banco.</div>
-    </div>
-    <div id="fbBox" class="hidden">
-      <div class="toolbar">
-        <input type="text" id="qCliente" placeholder="Buscar por nome ou e-mail">
-        <button type="button" class="sec" id="btnFbReload">Atualizar</button>
-        <button type="button" class="sec" id="btnFbCsv">Baixar CSV</button>
-        <button type="button" class="sec" id="btnFbSair">Sair</button>
-      </div>
-      <div class="hint" id="fbCount" style="margin-bottom:10px"></div>
-      <div style="overflow-x:auto">
-        <table class="tbl"><thead><tr><th>Nome</th><th>E-mail</th><th>Cadastro</th><th>Último acesso</th></tr></thead><tbody id="fbTbody"></tbody></table>
-      </div>
-    </div>
-    <div id="fbStatus" class="hint" style="margin-top:12px; white-space:pre-line"></div>
-  </section>
 
 </div>
 
