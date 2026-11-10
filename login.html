@@ -128,6 +128,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         // Sua configuração do Firebase mantida
         const firebaseConfig = {
@@ -141,6 +142,7 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
         // Lógica de ver/esconder senha
         const inputSenha = document.getElementById('senha');
@@ -165,9 +167,15 @@
             btn.disabled = true;
 
             signInWithEmailAndPassword(auth, email, senha)
-                .then((userCredential) => {
-                    // Opcional: Salvar o nome no localStorage para usar na loja
-                    localStorage.setItem('usuario_nome', nome);
+                .then(async (userCredential) => {
+                    const u = userCredential.user;
+                    // Atualiza o registro do cliente no painel (inclui quem se cadastrou antes)
+                    try {
+                        const dados = { email: u.email, criadoEm: u.metadata.creationTime, ultimoAcesso: serverTimestamp() };
+                        if (!u.displayName) dados.nome = nome;
+                        await setDoc(doc(db, 'usuarios', u.uid), dados, { merge: true });
+                    } catch (errPerfil) { console.warn('Perfil não atualizado:', errPerfil); }
+                    localStorage.setItem('usuario_nome', u.displayName ? u.displayName.split(' ')[0] : nome);
                     window.location.href = "index.html";
                 })
                 .catch((error) => {
