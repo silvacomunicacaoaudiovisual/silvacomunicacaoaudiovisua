@@ -74,6 +74,11 @@
         .empty-state { text-align: center; padding: 100px 20px; color: var(--text-muted); }
         .empty-state i { font-size: 3rem; margin-bottom: 20px; display: block; }
 
+        #msg-compra { display: none; margin-bottom: 20px; padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card); font-size: 0.9rem; }
+        #msg-compra.ok { border-color: #16a34a; color: #86efac; }
+        #msg-compra.erro { border-color: var(--primary); color: #fca5a5; }
+        #msg-compra a { color: inherit; font-weight: 700; }
+
         footer { text-align: center; padding: 40px; opacity: 0.4; font-size: 0.8rem; }
     </style>
 </head>
@@ -88,6 +93,8 @@
             <h1 id="welcome-msg">OLÁ!</h1>
             <p>Seus arquivos liberados aparecerão abaixo:</p>
         </div>
+
+        <div id="msg-compra" role="status"></div>
 
         <div class="download-list" id="lista-arquivos">
             <table>
@@ -107,23 +114,110 @@
         </div>
     </main>
 
-    <script>
-        window.addEventListener('load', () => {
-            const nomeUsuario = localStorage.getItem('usuario_nome');
-            if (nomeUsuario) {
-                document.getElementById('welcome-msg').innerText = `OLÁ, ${nomeUsuario.toUpperCase()}!`;
-            } else {
-                window.location.href = "login.html";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9OABRkjQ9PKtuj9IZ2pk9PxGeaPVN2CQ",
+            authDomain: "silva-artes.firebaseapp.com",
+            projectId: "silva-artes",
+            storageBucket: "silva-artes.firebasestorage.app",
+            messagingSenderId: "791520332158",
+            appId: "1:791520332158:web:eae65a41c6d6e5d924cb2f"
+        };
+        const HANDLE = "silva_grafica";
+        const LS = "silva_compras";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const nomeUsuario = localStorage.getItem('usuario_nome');
+        if (nomeUsuario) {
+            document.getElementById('welcome-msg').innerText = `OLÁ, ${nomeUsuario.toUpperCase()}!`;
+        } else {
+            window.location.href = "login.html";
+        }
+
+        function esc(t) { return String(t ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+        function aviso(html, tipo) {
+            const el = document.getElementById('msg-compra');
+            el.className = tipo || '';
+            el.innerHTML = html;
+            el.style.display = html ? 'block' : 'none';
+        }
+        function lerLocal() { try { return JSON.parse(localStorage.getItem(LS) || '[]'); } catch (e) { return []; } }
+        function salvarLocal(lista) { try { localStorage.setItem(LS, JSON.stringify(lista)); } catch (e) {} }
+        function juntar(...listas) {
+            const mapa = new Map();
+            listas.flat().forEach(c => { if (c && c.id && !mapa.has(c.id)) mapa.set(c.id, c); });
+            return [...mapa.values()].sort((a, b) => String(b.data).localeCompare(String(a.data)));
+        }
+
+        // Confirma na InfinitePay o pagamento de quem voltou do checkout
+        async function confirmarRetorno() {
+            const q = new URLSearchParams(location.search);
+            const order = q.get('order_nsu'), tx = q.get('transaction_nsu'), slug = q.get('slug');
+            if (!order || !tx || !slug) return null;
+            aviso('Confirmando seu pagamento…');
+            let j;
+            try {
+                const r = await fetch('https://api.checkout.infinitepay.io/payment_check', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ handle: HANDLE, order_nsu: order, transaction_nsu: tx, slug })
+                });
+                j = await r.json();
+            } catch (e) {
+                aviso('Não foi possível confirmar o pagamento agora. Recarregue a página em instantes ou chame a gente no WhatsApp com o comprovante.', 'erro');
+                return null;
             }
-            
-            // Se a tabela estiver vazia, mostra o aviso
+            if (!j || !j.success || !j.paid) {
+                aviso('Seu pagamento ainda não foi confirmado. Se pagou por Pix, aguarde alguns segundos e recarregue esta página.', 'erro');
+                return null;
+            }
+            let produtos = [];
+            try { produtos = await (await fetch('produtos.json?v=' + Date.now())).json(); } catch (e) {}
+            const p = Array.isArray(produtos) ? produtos.find(x => x.id === order) : null;
+            const recibo = q.get('receipt_url');
+            if (!p) {
+                aviso('Pagamento confirmado, mas não consegui identificar o produto. Chame a gente no WhatsApp' + (recibo ? ' com o <a href="' + esc(recibo) + '" target="_blank" rel="noopener">comprovante</a>' : '') + ' que liberamos seu arquivo.', 'erro');
+                return null;
+            }
+            history.replaceState(null, '', location.pathname);
+            aviso('Pagamento confirmado! Seu arquivo está liberado abaixo.', 'ok');
+            return { id: tx, produtoId: p.id, titulo: p.titulo, arte: p.arte, arquivo: p.arquivo, valor: p.valor, recibo: recibo || '', data: new Date().toISOString() };
+        }
+
+        function render(lista) {
             const tbody = document.querySelector('tbody');
-            if (tbody.children.length === 0) {
-                document.getElementById('aviso-vazio').style.display = 'block';
-                document.querySelector('table').style.display = 'none';
-            } else {
-                document.getElementById('aviso-vazio').style.display = 'none';
+            tbody.innerHTML = lista.map(c => `
+                <tr>
+                    <td><div class="item-info"><img src="${esc(encodeURI(c.arte || ''))}" alt=""><span>${esc(c.titulo)}</span></div></td>
+                    <td><a class="btn-download" href="${esc(encodeURI(c.arquivo || ''))}" download><i class="ph ph-download-simple"></i> BAIXAR</a></td>
+                </tr>`).join('');
+            const vazio = lista.length === 0;
+            document.getElementById('aviso-vazio').style.display = vazio ? 'block' : 'none';
+            document.querySelector('table').style.display = vazio ? 'none' : 'table';
+        }
+
+        onAuthStateChanged(auth, async (user) => {
+            let lista = lerLocal();
+            const nova = await confirmarRetorno();
+            if (nova) {
+                lista = juntar([nova], lista);
+                salvarLocal(lista);
+                if (user) { try { await setDoc(doc(db, 'usuarios', user.uid, 'compras', nova.id), nova); } catch (e) { console.warn('Compra não sincronizada:', e); } }
             }
+            if (user) {
+                try {
+                    const snap = await getDocs(collection(db, 'usuarios', user.uid, 'compras'));
+                    lista = juntar(lista, snap.docs.map(d => d.data()));
+                    salvarLocal(lista);
+                } catch (e) { console.warn('Não foi possível ler as compras da conta:', e); }
+            }
+            render(lista);
         });
     </script>
 </body>
