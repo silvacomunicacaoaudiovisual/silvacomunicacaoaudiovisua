@@ -69,17 +69,11 @@
   .row img{width:64px; height:64px; object-fit:contain; background:var(--field); border-radius:6px}
   .row .t{font-weight:600}
   .row .m{color:var(--muted); font-size:.85rem; word-break:break-all}
+  .tbl{width:100%; border-collapse:collapse; font-size:.92rem}
+  .tbl th{text-align:left; color:var(--muted); font-size:.8rem; text-transform:uppercase; padding:8px 10px; border-bottom:1px solid var(--line)}
+  .tbl td{padding:10px; border-bottom:1px solid var(--line); word-break:break-word}
   .empty{color:var(--muted); padding:18px 0; text-align:center}
   .hidden{display:none}
-  .item{border:1px solid var(--line); border-radius:8px; overflow:hidden}
-  .item .row{border:0; border-radius:0}
-  .acts{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
-  button.mini{background:transparent; color:var(--ink); border:1px solid var(--line); padding:6px 12px; font-size:.85rem}
-  .editform{padding:14px; border-top:1px solid var(--line); background:var(--field)}
-  .editform input[type=file]{width:100%; font:inherit; color:var(--ink)}
-  .notice{border:1px solid var(--cyan); border-radius:8px; padding:12px 14px; margin-bottom:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:space-between}
-  .notice span{flex:1 1 260px; font-size:.92rem}
-  #contagem{margin:0 0 10px}
   @media (prefers-reduced-motion: no-preference){ button{transition:opacity .15s} }
 </style>
 </head>
@@ -90,7 +84,7 @@
     <div class="bar" aria-hidden="true"></div>
     <div>
       <h1>Painel de artes</h1>
-      <p>Cadastre uma arte nova e gerencie todos os cards do site: editar valor e remover.</p>
+      <p>Cadastre uma arte nova: ela é enviada para o repositório do site e entra no catálogo.</p>
     </div>
   </header>
 
@@ -170,15 +164,39 @@
   </section>
 
   <section class="card">
-    <h2>Cards do site</h2>
+    <h2>Artes cadastradas pelo painel</h2>
     <div class="toolbar">
       <input type="text" id="qBusca" placeholder="Buscar por título">
       <select id="qCat"><option value="">Todas as categorias</option></select>
       <button type="button" class="sec" id="btnReload">Atualizar lista</button>
     </div>
-    <div id="aviso"></div>
-    <div class="hint" id="contagem"></div>
     <div class="list" id="lista"><div class="empty">Conecte o GitHub para carregar a lista.</div></div>
+  </section>
+
+
+  <section class="card">
+    <h2>Clientes cadastrados</h2>
+    <div id="fbLoginBox">
+      <div class="grid">
+        <div><label for="fbEmail">E-mail do administrador</label><input type="text" id="fbEmail" autocomplete="username"></div>
+        <div><label for="fbSenha">Senha</label><input type="password" id="fbSenha" autocomplete="current-password"></div>
+      </div>
+      <div class="actions"><button type="button" id="btnFbLogin">Entrar e ver clientes</button></div>
+      <div class="hint">Use a conta administradora do Firebase, a mesma liberada nas regras do banco.</div>
+    </div>
+    <div id="fbBox" class="hidden">
+      <div class="toolbar">
+        <input type="text" id="qCliente" placeholder="Buscar por nome ou e-mail">
+        <button type="button" class="sec" id="btnFbReload">Atualizar</button>
+        <button type="button" class="sec" id="btnFbCsv">Baixar CSV</button>
+        <button type="button" class="sec" id="btnFbSair">Sair</button>
+      </div>
+      <div class="hint" id="fbCount" style="margin-bottom:10px"></div>
+      <div style="overflow-x:auto">
+        <table class="tbl"><thead><tr><th>Nome</th><th>E-mail</th><th>Cadastro</th><th>Último acesso</th></tr></thead><tbody id="fbTbody"></tbody></table>
+      </div>
+    </div>
+    <div id="fbStatus" class="hint" style="margin-top:12px; white-space:pre-line"></div>
   </section>
 
 </div>
@@ -427,169 +445,32 @@ async function carregarLista(){
   }catch(e){ box.innerHTML = `<div class="empty" style="color:var(--err)">${e.message}</div>`; }
 }
 function esc(s){ return String(s).replace(/[&<>"']/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch])); }
-const GRID_CAT = {
-  "carousel-lancamentos":"LANÇAMENTOS", "carousel-treino-academia":"TREINO ACADEMIA", "carousel-abadas":"ABADÁS 2026",
-  "carousel-terceirao e nono ano":"TERCEIRAO E NONO ANO", "carousel-futebol":"FUTEBOL", "carousel-interclasse":"INTERCLASSE",
-  "carousel-pescaria":"PESCARIA", "carousel-religiosas":"RELIGIOSAS", "carousel-juninas":"JUNINAS", "carousel-wind banner":"WIND BANNER"
-};
-let editandoId = null;
-
-function ordenar(itens){
-  const com = itens.filter(p=>p.criadoEm).sort((a,b)=>String(b.criadoEm).localeCompare(String(a.criadoEm)));
-  return com.concat(itens.filter(p=>!p.criadoEm));
-}
-function formEdicao(p){
-  const linkAtual = /^https:\/\//.test(p.link||"") ? p.link : "";
-  const valorTxt = Number(p.valor).toFixed(2).replace(".", ",");
-  return `<div class="editform">
-    <div class="grid">
-      <div><label for="eTitulo">Título</label><input type="text" id="eTitulo" value="${esc(p.titulo)}" autocomplete="off"></div>
-      <div><label for="eValor">Valor (R$)</label><input type="text" id="eValor" inputmode="decimal" value="${esc(valorTxt)}" autocomplete="off"></div>
-      <div>
-        <label for="eLink">Link de pagamento</label>
-        <input type="text" id="eLink" value="${esc(linkAtual)}" placeholder="https://checkout.infinitepay.io/..." autocomplete="off">
-        <div class="hint">Se mudar o valor e não colar um link novo, o painel gera um link novo já com o valor novo.</div>
-      </div>
-      <div>
-        <label for="eArte">Trocar a imagem (opcional)</label>
-        <input type="file" id="eArte" accept="image/png,image/jpeg,image/webp">
-      </div>
-    </div>
-    <div class="actions">
-      <button type="button" data-save>Salvar alterações</button>
-      <button type="button" class="sec" data-cancel>Cancelar</button>
-    </div>
-  </div>`;
-}
 function renderLista(){
   const q = $("#qBusca").value.trim().toLowerCase(), cat = $("#qCat").value;
-  const temAntigos = produtos.some(p=>p.legacy);
-  $("#aviso").innerHTML = temAntigos ? "" : `<div class="notice">
-      <span>Os cards que já estavam no site (JUNINAS 01, 02…) ainda não aparecem aqui. Importe uma vez para poder editar e remover.</span>
-      <button type="button" id="btnImport">Importar cards antigos do site</button></div>`;
-  const itens = ordenar(produtos.filter(p => !p.oculto && (!cat || p.categoria===cat) && (!q || String(p.titulo).toLowerCase().includes(q))));
-  $("#contagem").textContent = itens.length + (itens.length===1 ? " card" : " cards");
+  const itens = produtos.filter(p => (!cat || p.categoria===cat) && (!q || p.titulo.toLowerCase().includes(q))).slice().reverse();
   const box = $("#lista");
-  if(!itens.length){ box.innerHTML = `<div class="empty">Nenhum card encontrado.</div>`; return; }
-  box.innerHTML = itens.map(p=>{
-    const aberto = p.id === editandoId;
-    return `<div class="item">
-      <div class="row">
-        <img src="${esc(rawUrl(p.arte))}" alt="" loading="lazy">
-        <div><div class="t">${esc(p.titulo)} · ${brl(p.valor)}</div><div class="m">${esc(p.categoria)} · ${p.legacy ? "card antigo do site" : esc(p.arquivo)}</div></div>
-        <div class="acts">
-          <button type="button" class="mini" data-edit="${esc(p.id)}">${aberto ? "Fechar" : "Editar"}</button>
-          <button type="button" class="danger" data-del="${esc(p.id)}">Remover</button>
-        </div>
-      </div>
-      ${aberto ? formEdicao(p) : ""}
-    </div>`;
-  }).join("");
+  if(!itens.length){ box.innerHTML = `<div class="empty">Nenhuma arte cadastrada pelo painel ainda.</div>`; return; }
+  box.innerHTML = itens.map(p=>`
+    <div class="row">
+      <img src="${esc(rawUrl(p.arte))}" alt="" loading="lazy">
+      <div><div class="t">${esc(p.titulo)} · ${brl(p.valor)}</div><div class="m">${esc(p.categoria)} · ${esc(p.arquivo)}</div></div>
+      <button type="button" class="danger" data-del="${esc(p.id)}">Remover</button>
+    </div>`).join("");
 }
-
-async function importarAntigos(){
-  if(precisaConfig()) return;
-  try{
-    setStatus("Lendo os cards antigos do index.html do repositório…");
-    const r = await gh("GET", "index.html");
-    if(!r.ok) throw new Error(await erroGh(r));
-    const html = b64ToStr((await r.json()).content);
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    const novos = [];
-    doc.querySelectorAll(".grid-products").forEach(g=>{
-      const categoria = GRID_CAT[g.id]; if(!categoria) return;
-      g.querySelectorAll(".card[data-id]").forEach(c=>{
-        const oc = (c.querySelector(".btn-buy") || {getAttribute:()=>""}).getAttribute("onclick") || "";
-        const m = oc.match(/irParaPagamento\('([^']*)'\)/);
-        const v = parseValor((c.querySelector(".price")||{}).textContent || "");
-        novos.push({
-          id: c.dataset.id, legacy: true, categoria,
-          titulo: (c.querySelector(".card-title")||{}).textContent.trim(),
-          valor: isNaN(v) ? 0 : v, link: m ? m[1] : "",
-          arte: (c.querySelector(".card-img img")||{getAttribute:()=>""}).getAttribute("src") || "", arquivo: ""
-        });
-      });
-    });
-    if(!novos.length) throw new Error("não encontrei cards antigos no index.html do repositório. Envie primeiro o index.html novo para o GitHub e espere o site atualizar.");
-    setStatus("Gravando no catálogo…");
-    const { lista, sha } = await lerJson();
-    const ids = new Set(lista.map(p=>p.id));
-    const add = novos.filter(n=>!ids.has(n.id));
-    await gravarJson(lista.concat(add), sha, `Painel: importa ${add.length} cards antigos`);
-    setStatus(`${add.length} cards antigos importados. Agora dá para editar e remover. O site atualiza em cerca de 1 minuto.`, "ok");
-    await carregarLista();
-  }catch(e){ setStatus("Não foi possível importar: " + e.message, "err"); }
-}
-
-async function salvarEdicao(id){
-  if(precisaConfig()) return;
-  const p = produtos.find(x=>x.id===id); if(!p) return;
-  const titulo = $("#eTitulo").value.trim().toUpperCase();
-  const valor = parseValor($("#eValor").value);
-  const linkIn = $("#eLink").value.trim();
-  const nova = $("#eArte").files[0];
-  if(!titulo) return setStatus("Informe o título.", "err");
-  if(isNaN(valor)) return setStatus("Informe o valor, por exemplo 10,00.", "err");
-  if(linkIn && !/^https:\/\//i.test(linkIn)) return setStatus("O link de pagamento deve começar com https://", "err");
-
-  const valorMudou = valor !== Number(p.valor);
-  const linkMudou = !!linkIn && linkIn !== (p.link||"");
-  let link = p.link || "", arte = p.arte;
-  try{
-    if(linkMudou) link = linkIn;
-    else if(valorMudou){
-      setStatus("Gerando o novo link de pagamento…");
-      link = await gerarLink(titulo, valor, id + "-" + Date.now().toString(36));
-    }
-    if(nova){
-      setStatus("Enviando a nova imagem…");
-      arte = await pathLivre(`${p.categoria}/${slug(titulo)}`, extDe(nova.name), id);
-      await putFile(arte, await fileToB64(nova), `Painel: imagem ${titulo}`);
-    }
-    setStatus("Salvando…");
-    const { lista, sha } = await lerJson();
-    const i = lista.findIndex(x=>x.id===id);
-    if(i < 0) throw new Error("este card não está mais no catálogo.");
-    lista[i] = { ...lista[i], titulo, valor, link, arte };
-    await gravarJson(lista, sha, `Painel: edita ${titulo}`);
-    if(nova && !p.legacy && p.arte && p.arte !== arte) await apagarArquivo(p.arte);
-    editandoId = null;
-    setStatus(`“${titulo}” atualizado. O site atualiza em cerca de 1 minuto.`, "ok");
-    await carregarLista();
-  }catch(e){ setStatus("Não foi possível salvar: " + e.message, "err"); }
-}
-
 async function remover(id){
   const p = produtos.find(x=>x.id===id); if(!p) return;
-  const aviso = p.legacy
-    ? `Remover “${p.titulo}” do site?`
-    : `Remover “${p.titulo}” do catálogo? A imagem e o arquivo também serão apagados do repositório.`;
-  if(!confirm(aviso)) return;
+  if(!confirm(`Remover “${p.titulo}” do catálogo? A imagem e o arquivo também serão apagados do repositório.`)) return;
   try{
     setStatus("Removendo…");
     const { lista, sha } = await lerJson();
-    if(p.legacy){
-      const i = lista.findIndex(x=>x.id===id);
-      if(i >= 0) lista[i] = { ...lista[i], oculto: true };
-      await gravarJson(lista, sha, `Painel: remove ${p.titulo}`);
-    }else{
-      await gravarJson(lista.filter(x=>x.id!==id), sha, `Painel: remove ${p.titulo}`);
-      await apagarArquivo(p.arte); if(p.arquivo) await apagarArquivo(p.arquivo);
-    }
-    if(editandoId === id) editandoId = null;
-    setStatus(`“${p.titulo}” removida. O site atualiza em cerca de 1 minuto.`, "ok");
+    await gravarJson(lista.filter(x=>x.id!==id), sha, `Painel: remove ${p.titulo}`);
+    await apagarArquivo(p.arte); await apagarArquivo(p.arquivo);
+    setStatus(`“${p.titulo}” removida.`, "ok");
     await carregarLista();
   }catch(e){ setStatus("Não foi possível remover: " + e.message, "err"); }
 }
 
-$("#lista").addEventListener("click", e=>{
-  const d = e.target.closest("[data-del]"); if(d) return remover(d.dataset.del);
-  const ed = e.target.closest("[data-edit]");
-  if(ed){ editandoId = (editandoId === ed.dataset.edit) ? null : ed.dataset.edit; return renderLista(); }
-  if(e.target.closest("[data-save]")){ if(editandoId) salvarEdicao(editandoId); return; }
-  if(e.target.closest("[data-cancel]")){ editandoId = null; renderLista(); }
-});
-$("#aviso").addEventListener("click", e=>{ if(e.target.closest("#btnImport")) importarAntigos(); });
+$("#lista").addEventListener("click", e=>{ const b = e.target.closest("[data-del]"); if(b) remover(b.dataset.del); });
 $("#qBusca").addEventListener("input", renderLista);
 $("#qCat").addEventListener("change", renderLista);
 $("#btnReload").addEventListener("click", carregarLista);
@@ -597,6 +478,74 @@ $("#btnAdd").addEventListener("click", adicionar);
 $("#btnClear").addEventListener("click", ()=>{ limpar(); setStatus(""); });
 $("#btnSaveCfg").addEventListener("click", saveCfg);
 $("#btnForget").addEventListener("click", forgetToken);
+
+/* ---------- clientes cadastrados (Firebase) ---------- */
+const FB_KEY = "AIzaSyB9OABRkjQ9PKtuj9IZ2pk9PxGeaPVN2CQ", FB_PROJECT = "silva-artes";
+let fbToken = null, clientes = [];
+function fbMsg(t, err){ const e=$("#fbStatus"); e.textContent=t||""; e.style.color = err ? "var(--err)" : ""; }
+function fmtData(v){ const d = new Date(v); return isNaN(d) ? "—" : d.toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"}); }
+
+async function fbLogin(){
+  const email = $("#fbEmail").value.trim(), senha = $("#fbSenha").value;
+  if(!email || !senha) return fbMsg("Informe e-mail e senha do administrador.", true);
+  fbMsg("Entrando…");
+  try{
+    const r = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FB_KEY}`, {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ email, password: senha, returnSecureToken: true })
+    });
+    const j = await r.json();
+    if(!r.ok) throw new Error("E-mail ou senha incorretos.");
+    fbToken = j.idToken; $("#fbSenha").value = "";
+    $("#fbLoginBox").classList.add("hidden"); $("#fbBox").classList.remove("hidden");
+    await fbListar();
+  }catch(e){ fbMsg(e.message === "Failed to fetch" ? "Sem conexão com o Firebase." : e.message, true); }
+}
+async function fbListar(){
+  fbMsg("Carregando clientes…");
+  try{
+    const lista = []; let page = "";
+    do{
+      const url = `https://firestore.googleapis.com/v1/projects/${FB_PROJECT}/databases/(default)/documents/usuarios?pageSize=300` + (page ? `&pageToken=${encodeURIComponent(page)}` : "");
+      const r = await fetch(url, { headers: { Authorization: "Bearer " + fbToken } });
+      if(r.status === 403) throw new Error("Sem permissão. Confira as regras do Firestore e se esta conta é a administradora.");
+      if(r.status === 404) throw new Error("Banco Firestore não encontrado. Ele precisa ser criado no console do Firebase.");
+      if(r.status === 401) { fbSair(); throw new Error("Sessão expirada. Entre de novo."); }
+      if(!r.ok) throw new Error("Erro " + r.status + " ao ler os clientes.");
+      const j = await r.json();
+      (j.documents || []).forEach(d => {
+        const f = d.fields || {}, g = k => f[k] ? (f[k].stringValue ?? f[k].timestampValue ?? "") : "";
+        lista.push({ uid: d.name.split("/").pop(), nome: [g("nome"), g("sobrenome")].filter(Boolean).join(" "),
+                     email: g("email"), criadoEm: g("criadoEm") || d.createTime, ultimoAcesso: g("ultimoAcesso") });
+      });
+      page = j.nextPageToken || "";
+    }while(page);
+    lista.sort((a,b) => (Date.parse(b.criadoEm)||0) - (Date.parse(a.criadoEm)||0));
+    clientes = lista; fbRender(); fbMsg("");
+  }catch(e){ fbMsg(e.message, true); }
+}
+function fbRender(){
+  const q = $("#qCliente").value.trim().toLowerCase();
+  const itens = clientes.filter(c => !q || c.nome.toLowerCase().includes(q) || c.email.toLowerCase().includes(q));
+  $("#fbCount").textContent = `${itens.length} de ${clientes.length} cliente(s)`;
+  $("#fbTbody").innerHTML = itens.length ? itens.map(c => `<tr><td>${esc(c.nome || "—")}</td><td>${esc(c.email)}</td><td>${fmtData(c.criadoEm)}</td><td>${fmtData(c.ultimoAcesso)}</td></tr>`).join("")
+    : `<tr><td colspan="4" class="empty">Nenhum cliente encontrado.</td></tr>`;
+}
+function fbSair(){ fbToken = null; clientes = []; $("#fbBox").classList.add("hidden"); $("#fbLoginBox").classList.remove("hidden"); }
+function fbCsv(){
+  const q = s => '"' + String(s ?? "").replace(/"/g,'""') + '"';
+  const linhas = [["Nome","E-mail","Cadastro","Último acesso"].map(q).join(";")]
+    .concat(clientes.map(c => [c.nome, c.email, fmtData(c.criadoEm), fmtData(c.ultimoAcesso)].map(q).join(";")));
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["\ufeff" + linhas.join("\r\n")], {type:"text/csv;charset=utf-8"}));
+  a.download = "clientes.csv"; a.click(); URL.revokeObjectURL(a.href);
+}
+$("#btnFbLogin").addEventListener("click", fbLogin);
+$("#fbSenha").addEventListener("keydown", e => { if(e.key === "Enter") fbLogin(); });
+$("#btnFbReload").addEventListener("click", fbListar);
+$("#btnFbCsv").addEventListener("click", fbCsv);
+$("#btnFbSair").addEventListener("click", fbSair);
+$("#qCliente").addEventListener("input", fbRender);
 
 montarCategorias();
 loadCfg();
