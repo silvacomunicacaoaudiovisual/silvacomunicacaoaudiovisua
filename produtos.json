@@ -1310,16 +1310,6 @@
     "arquivo": ""
   },
   {
-    "id": "ant-wind-banner-01",
-    "legacy": true,
-    "categoria": "WIND BANNER",
-    "titulo": "WIND BANNER 01",
-    "valor": 10,
-    "link": "LINK_PSG",
-    "arte": "WIND BANNER/01.png",
-    "arquivo": ""
-  },
-  {
     "id": "ant-wind-banner-02",
     "legacy": true,
     "categoria": "WIND BANNER",
