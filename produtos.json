@@ -1310,16 +1310,6 @@
     "arquivo": ""
   },
   {
-    "id": "ant-wind-banner-05",
-    "legacy": true,
-    "categoria": "WIND BANNER",
-    "titulo": "WIND BANNER 05",
-    "valor": 10,
-    "link": "LINK_REAL",
-    "arte": "WIND BANNER/05.png",
-    "arquivo": ""
-  },
-  {
     "id": "ant-wind-banner-06",
     "legacy": true,
     "categoria": "WIND BANNER",
