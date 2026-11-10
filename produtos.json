@@ -1428,5 +1428,15 @@
     "arte": "WIND BANNER/acai-03.jpg",
     "arquivo": "ARQUIVOS/acai-03.cdr",
     "criadoEm": "2026-11-10T12:50:05.402Z"
+  },
+  {
+    "id": "mwb0baox",
+    "titulo": "DENTISTA",
+    "valor": 10,
+    "link": "https://checkout.infinitepay.io/silva_grafica?lenc=G8QAYBwJdmzKcPRhrQrRp27-MK88Ld3nY2wPKIG1xTsvqZKC3jhwePp6uMbBFphs0MG3h7xYaU7Y9qjcW7DSepS4qOao0SldS9oR73UUXlhripNrtmdog73ou3kIBgcr_cM31WVmWM6yRiz6CEG2TKpyzw0PSpWHP70JoFhf05qWwEV6RAAXMjUeCA.v1.2ff5c16ba3b5a5ee",
+    "categoria": "WIND BANNER",
+    "arte": "WIND BANNER/dentista.jpg",
+    "arquivo": "ARQUIVOS/dentista.cdr",
+    "criadoEm": "2026-11-10T18:11:48.181Z"
   }
 ]
